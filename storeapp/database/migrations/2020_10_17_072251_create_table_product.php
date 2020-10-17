@@ -15,17 +15,17 @@ class CreateTableProduct extends Migration
     {
         Schema::create('Product', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->comment('title cua danh muc');
-            $table->string('slug')->comment('tieu de');
-            $table->string('sku')->comment('ma san pham');
+            $table->string('title', 50)->comment('title cua danh muc');
+            $table->string('slug', 50)->comment('tieu de');
+            $table->string('sku', 10)->comment('ma san pham');
             $table->integer('price')->comment('gia san pham');
             $table->integer('price_sale')->comment('gia khuyen mai');
-            $table->string('qty')->comment('so luong');
-            $table->string('weight')->comment('khoi luong');
-            $table->string('height')->comment('chieu cao');
-            $table->string('width')->comment('chieu rong');
-            $table->string('media_id')->comment('media id ');
-            $table->string('category_id')->comment('category id');
+            $table->integer('qty')->comment('so luong');
+            $table->integer('weight')->comment('khoi luong');
+            $table->integer('height')->comment('chieu cao');
+            $table->integer('width')->comment('chieu rong');
+            $table->integer('media_id')->comment('media id ');
+            $table->integer('category_id')->comment('category id');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateTablePage extends Migration
     {
         Schema::create('Page', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->comment('user nguoi dang nhap');
-            $table->string('title')->comment('duong dan');
+            $table->integer('user_id')->comment('user nguoi dang nhap');
+            $table->string('title', 50)->comment('duong dan');
             $table->string('content')->comment('noi dung');
             $table->timestamps();
         });
