@@ -18,7 +18,7 @@ class CreateTableMedia extends Migration
             $table->string('title')->comment('media id ');
             $table->string('name')->comment('ten');
             $table->string('size')->comment('kich co ');
-            $table->string('demension')->comment('chieu dai rong  ');
+            $table->string('dimension')->comment('chieu dai rong  ');
             $table->string('type')->comment('loai hinh');
             $table->timestamps();
         });
