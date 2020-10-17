@@ -13,7 +13,7 @@ class CreateTableProduct extends Migration
      */
     public function up()
     {
-        Schema::create('table_product', function (Blueprint $table) {
+        Schema::create('Product', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('title cua danh muc');
             $table->string('slug')->comment('tieu de');

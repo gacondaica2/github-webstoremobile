@@ -13,7 +13,7 @@ class CreateTablePage extends Migration
      */
     public function up()
     {
-        Schema::create('table_page', function (Blueprint $table) {
+        Schema::create('Page', function (Blueprint $table) {
             $table->id();
             $table->string('user_id')->comment('user nguoi dang nhap');
             $table->string('title')->comment('duong dan');

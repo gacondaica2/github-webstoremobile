@@ -13,7 +13,7 @@ class CreateTableDistrict extends Migration
      */
     public function up()
     {
-        Schema::create('table_district', function (Blueprint $table) {
+        Schema::create('District', function (Blueprint $table) {
             $table->id();
             $table->string('ghn_id')->comment('ghn id');
             $table->string('name')->comment('ten quan/huyen');

@@ -13,7 +13,7 @@ class CreateTableWard extends Migration
      */
     public function up()
     {
-        Schema::create('table_ward', function (Blueprint $table) {
+        Schema::create('Ward', function (Blueprint $table) {
             $table->id();
             $table->string('name', 200)->comment('ten xa/phuong');
             $table->string('ghn_id')->comment('ghn id');

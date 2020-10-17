@@ -13,7 +13,7 @@ class CreateTableOrderDetail extends Migration
      */
     public function up()
     {
-        Schema::create('table_order_detail', function (Blueprint $table) {
+        Schema::create('Order_detail', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('ten');
             $table->string('price')->comment('gia');

@@ -13,7 +13,7 @@ class CreateTableProvince extends Migration
      */
     public function up()
     {
-        Schema::create('table_province', function (Blueprint $table) {
+        Schema::create('Province', function (Blueprint $table) {
             $table->id();
             $table->string('ghn_id')->comment('id cua');
             $table->string('name')->comment('ten tinh/thanh pho');

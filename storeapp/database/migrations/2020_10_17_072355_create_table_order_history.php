@@ -13,7 +13,7 @@ class CreateTableOrderHistory extends Migration
      */
     public function up()
     {
-        Schema::create('table_order_history', function (Blueprint $table) {
+        Schema::create('Order_history', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('tieu de');
             $table->string('status')->comment('trang thai');
