@@ -146,71 +146,39 @@
                                 <nav class="main-nav d-flex justify-content-center">
                                     <ul>
                                         <li class="dropdown-holder"><a href="javascript:void(0)">Home</a>
-                                        </li>
-                                        <li class="megamenu-holder position-static"><a href="shop-left-sidebar.html">Shop <i
-                                                class="ion-chevron-down"></i></a>
+                                        </li>                     
+                                        @if( count(\Helper::category()) > 0)
+                                        <li class="megamenu-holder position-static">Điện thoại <i
+                                                class="ion-chevron-down"></i>
                                             <ul class="kenne-megamenu">
-                                                <li><span class="megamenu-title">Shop Page Layout</span>
+                                                    @foreach(\Helper::category() as $key => $item )
+                                                        @if($key < 4)
+                                                        <li><span class="megamenu-title">{{ $item->title }}</span>
+                                                            @if( count($item->product) > 0)                                                         
+                                                            <ul>
+                                                                @foreach($item->product as $key => $value )
+                                                                @if( $key < 5)
+                                                                <li><a href="shop-fullwidth.html">{{ $value->title }}</a></li>
+                                                                </li>
+                                                                @endif
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </li>
+                                                        @endif
+                                                    @endforeach
+                                                <li><span class="megamenu-title">Xem Thêm</span>
                                                     <ul>
-                                                        <li><a href="shop-fullwidth.html">Grid Fullwidth</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Left Sidebar</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Right Sidebar</a></li>
-                                                        <li><a href="shop-list-fullwidth.html">List Fullwidth</a></li>
-                                                        <li><a href="shop-list-left-sidebar.html">List Left Sidebar</a>
-                                                        </li>
-                                                        <li><a href="shop-list-right-sidebar.html">List Right
-                                                                Sidebar</a>
-                                                        </li>
+                                                        @foreach(\Helper::category() as $key => $item )
+                                                            @if($key >= 4 )
+                                                            <li><a href="shop-fullwidth.html">{{ $item->title }}</a></li>
+                                                        @endif
+                                                        @endforeach
                                                     </ul>
-                                                </li>
-                                                <li><span class="megamenu-title">Single Product Style</span>
-                                                    <ul>
-                                                        <li><a href="single-product-gallery-left.html">Gallery Left</a>
-                                                        </li>
-                                                        <li><a href="single-product-gallery-right.html">Gallery
-                                                                Right</a>
-                                                        </li>
-                                                        <li><a href="single-product-tab-style-left.html">Tab Style
-                                                                Left</a>
-                                                        </li>
-                                                        <li><a href="single-product-tab-style-right.html">Tab Style
-                                                                Right</a>
-                                                        </li>
-                                                        <li><a href="single-product-sticky-left.html">Sticky Left</a>
-                                                        </li>
-                                                        <li><a href="single-product-sticky-right.html">Sticky Right</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><span class="megamenu-title">Single Product Type</span>
-                                                    <ul>
-                                                        <li><a href="single-product.html">Single Product</a></li>
-                                                        <li><a href="single-product-sale.html">Single Product Sale</a>
-                                                        </li>
-                                                        <li><a href="single-product-group.html">Single Product Group</a>
-                                                        </li>
-                                                        <li><a href="single-product-variable.html">Single Product
-                                                                Variable</a>
-                                                        </li>
-                                                        <li><a href="single-product-affiliate.html">Single Product
-                                                                Affiliate</a>
-                                                        </li>
-                                                        <li><a href="single-product-slider.html">Single Product
-                                                                Slider</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li><span class="megamenu-title">Shop Related Pages</span>
-                                                    <ul>
-                                                        <li><a href="my-account.html">Tài khoản</a></li>
-                                                        <li><a href="login-register.html">Login | Register</a></li>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="compare.html">Compare</a></li>
-                                                    </ul>
-                                                </li>
+                                                </li>     
                                             </ul>
-                                        </li>
+                                        </li>                                                                        
+                                        @endif
                                         <li><a href="javascript:void(0)">Pages <i class="ion-chevron-down"></i></a>
                                             <ul class="kenne-dropdown">
                                                 <li><a href="coming-soon_page.html">Coming Soon</a></li>
@@ -253,91 +221,39 @@
                                                 <ul>
                                                     <li class="dropdown-holder"><a href="javascript:void(0)">Home <i
                                                             class="ion-chevron-down"></i></a>
-                                                        <ul class="kenne-dropdown">
-                                                            <li><a href="index.html">Home One</a></li>
-                                                            <li><a href="index-2.html">Home Two</a></li>
-                                                            <li><a href="index-3.html">Home Three</a></li>
-                                                        </ul>
                                                     </li>
-                                                    <li class="megamenu-holder position-static"><a href="shop-left-sidebar.html">Shop <i
-                                                            class="ion-chevron-down"></i></a>
-                                                        <ul class="kenne-megamenu">
-                                                            <li><span class="megamenu-title">Shop Page Layout</span>
-                                                                <ul>
-                                                                    <li><a href="shop-fullwidth.html">Grid Fullwidth</a>
-                                                                    </li>
-                                                                    <li><a href="shop-left-sidebar.html">Left Sidebar</a>
-                                                                    </li>
-                                                                    <li><a href="shop-right-sidebar.html">Right Sidebar</a>
-                                                                    </li>
-                                                                    <li><a href="shop-list-fullwidth.html">List
-                                                                            Fullwidth</a></li>
-                                                                    <li><a href="shop-list-left-sidebar.html">List Left
-                                                                            Sidebar</a>
-                                                                    </li>
-                                                                    <li><a href="shop-list-right-sidebar.html">List Right
-                                                                            Sidebar</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><span class="megamenu-title">Single Product Style</span>
-                                                                <ul>
-                                                                    <li><a href="single-product-gallery-left.html">Gallery
-                                                                            Left</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-gallery-right.html">Gallery
-                                                                            Right</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-tab-style-left.html">Tab
-                                                                            Style
-                                                                            Left</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-tab-style-right.html">Tab
-                                                                            Style
-                                                                            Right</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-sticky-left.html">Sticky
-                                                                            Left</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-sticky-right.html">Sticky
-                                                                            Right</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><span class="megamenu-title">Single Product Type</span>
-                                                                <ul>
-                                                                    <li><a href="single-product.html">Single Product</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-sale.html">Single Product
-                                                                            Sale</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-group.html">Single Product
-                                                                            Group</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-variable.html">Single
-                                                                            Product
-                                                                            Variable</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-affiliate.html">Single
-                                                                            Product
-                                                                            Affiliate</a>
-                                                                    </li>
-                                                                    <li><a href="single-product-slider.html">Single Product
-                                                                            Slider</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                            <li><span class="megamenu-title">Shop Related Pages</span>
-                                                                <ul>
-                                                                    <li><a href="my-account.html">Tài khoản</a></li>
-                                                                    <li><a href="login-register.html">Đăng nhập | Đăng ký</a>
-                                                                    </li>
-                                                                    <li><a href="cart.html">Giỏ hàng</a></li>
-                                                                    <li><a href="checkout.html">Đăng xuất</a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
+                                                    @if( count(\Helper::category()) > 0)
+                                                        <li class="megamenu-holder position-static">Điện thoại <i
+                                                                class="ion-chevron-down"></i>
+                                                            <ul class="kenne-megamenu">
+                                                                    @foreach(\Helper::category() as $key => $item )
+                                                                        @if($key < 4)
+                                                                        <li><span class="megamenu-title">{{ $item->title }}</span>
+                                                                            @if( count($item->product) > 0)                                                         
+                                                                            <ul>
+                                                                                @foreach($item->product as $key => $value )
+                                                                                @if( $key < 5)
+                                                                                <li><a href="shop-fullwidth.html">{{ $value->title }}</a></li>
+                                                                                </li>
+                                                                                @endif
+                                                                                @endforeach
+                                                                            </ul>
+                                                                            @endif
+                                                                        </li>
+                                                                        @endif
+                                                                    @endforeach
+                                                                <li><span class="megamenu-title">Xem Thêm</span>
+                                                                    <ul>
+                                                                        @foreach(\Helper::category() as $key => $item )
+                                                                            @if($key >= 4 )
+                                                                            <li><a href="shop-fullwidth.html">{{ $item->title }}</a></li>
+                                                                        @endif
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </li>     
+                                                            </ul>
+                                                        </li>                                                                        
+                                                        @endif
                                                     <li><a href="javascript:void(0)">Pages <i
                                                             class="ion-chevron-down"></i></a>
                                                         <ul class="kenne-dropdown">
@@ -932,195 +848,6 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade modal-wrapper" id="exampleModalCenter">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="modal-inner-area sp-area row">
-                            <div class="col-lg-5">
-                                <div class="sp-img_area">
-                                    <div class="kenne-element-carousel sp-img_slider slick-img-slider" data-slick-options='{
-                                    "slidesToShow": 1,
-                                    "arrows": false,
-                                    "fade": true,
-                                    "draggable": false,
-                                    "swipe": false,
-                                    "asNavFor": ".sp-img_slider-nav"
-                                    }'>
-                                        <div class="single-slide red">
-                                            <img src="assets/images/product/1-1.jpg" alt="Kenne's Product Image">
-                                        </div>
-                                        <div class="single-slide orange">
-                                            <img src="assets/images/product/1-2.jpg" alt="Kenne's Product Image">
-                                        </div>
-                                        <div class="single-slide brown">
-                                            <img src="assets/images/product/2-1.jpg" alt="Kenne's Product Image">
-                                        </div>
-                                        <div class="single-slide umber">
-                                            <img src="assets/images/product/2-2.jpg" alt="Kenne's Product Image">
-                                        </div>
-                                        <div class="single-slide black">
-                                            <img src="assets/images/product/3-1.jpg" alt="Kenne's Product Image">
-                                        </div>
-                                        <div class="single-slide golden">
-                                            <img src="assets/images/product/3-2.jpg" alt="Kenne's Product Image">
-                                        </div>
-                                    </div>
-                                    <div class="kenne-element-carousel sp-img_slider-nav arrow-style-2 arrow-style-3" data-slick-options='{
-                                   "slidesToShow": 4,
-                                    "asNavFor": ".sp-img_slider",
-                                   "focusOnSelect": true,
-                                   "arrows" : true,
-                                   "spaceBetween": 30
-                                  }' data-slick-responsive='[
-                                    {"breakpoint":1501, "settings": {"slidesToShow": 3}},
-                                    {"breakpoint":1200, "settings": {"slidesToShow": 2}},
-                                    {"breakpoint":992, "settings": {"slidesToShow": 4}},
-                                    {"breakpoint":768, "settings": {"slidesToShow": 3}},
-                                    {"breakpoint":575, "settings": {"slidesToShow": 2}}
-                                ]'>
-                                        <div class="single-slide red">
-                                            <img src="assets/images/product/1-1.jpg" alt="Kenne's Product Thumnail">
-                                        </div>
-                                        <div class="single-slide orange">
-                                            <img src="assets/images/product/1-2.jpg" alt="Kenne's Product Thumnail">
-                                        </div>
-                                        <div class="single-slide brown">
-                                            <img src="assets/images/product/2-1.jpg" alt="Kenne's Product Thumnail">
-                                        </div>
-                                        <div class="single-slide umber">
-                                            <img src="assets/images/product/2-2.jpg" alt="Kenne's Product Thumnail">
-                                        </div>
-                                        <div class="single-slide black">
-                                            <img src="assets/images/product/3-1.jpg" alt="Kenne's Product Thumnail">
-                                        </div>
-                                        <div class="single-slide golden">
-                                            <img src="assets/images/product/3-2.jpg" alt="Kenne's Product Thumnail">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7 col-lg-6">
-                                <div class="sp-content">
-                                    <div class="sp-heading">
-                                        <h5><a href="#">Dolorem odio provident ut nihil</a></h5>
-                                    </div>
-                                    <div class="rating-box">
-                                        <ul>
-                                            <li><i class="ion-android-star"></i></li>
-                                            <li><i class="ion-android-star"></i></li>
-                                            <li><i class="ion-android-star"></i></li>
-                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                        </ul>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="new-price new-price-2">$194.00</span>
-                                        <span class="old-price">$241.00</span>
-                                    </div>
-                                    <div class="sp-essential_stuff">
-                                        <ul>
-                                            <li>Brands <a href="javascript:void(0)">Buxton</a></li>
-                                            <li>Product Code: <a href="javascript:void(0)">Product 16</a></li>
-                                            <li>Reward Points: <a href="javascript:void(0)">100</a></li>
-                                            <li>Availability: <a href="javascript:void(0)">In Stock</a></li>
-                                            <li>EX Tax: <a href="javascript:void(0)"><span>$453.35</span></a></li>
-                                            <li>Price in reward points: <a href="javascript:void(0)">400</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="color-list_area">
-                                        <div class="color-list_heading">
-                                            <h4>Available Options</h4>
-                                        </div>
-                                        <span class="sub-title">Color</span>
-                                        <div class="color-list">
-                                            <a href="javascript:void(0)" class="single-color active" data-swatch-color="red">
-                                                <span class="bg-red_color"></span>
-                                                <span class="color-text">Red (+$150)</span>
-                                            </a>
-                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="orange">
-                                                <span class="burnt-orange_color"></span>
-                                                <span class="color-text">Orange (+$170)</span>
-                                            </a>
-                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="brown">
-                                                <span class="brown_color"></span>
-                                                <span class="color-text">Brown (+$120)</span>
-                                            </a>
-                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="umber">
-                                                <span class="raw-umber_color"></span>
-                                                <span class="color-text">Umber (+$125)</span>
-                                            </a>
-                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="black">
-                                                <span class="black_color"></span>
-                                                <span class="color-text">Black (+$125)</span>
-                                            </a>
-                                            <a href="javascript:void(0)" class="single-color" data-swatch-color="golden">
-                                                <span class="golden_color"></span>
-                                                <span class="color-text">Golden (+$125)</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="quantity">
-                                        <label>Quantity</label>
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="1" type="text">
-                                            <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                            <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="kenne-group_btn">
-                                        <ul>
-                                            <li><a href="cart.html" class="add-to_cart">Cart To Cart</a></li>
-                                            <li><a href="cart.html"><i class="ion-android-favorite-outline"></i></a></li>
-                                            <li><a href="cart.html"><i class="ion-ios-shuffle-strong"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="kenne-tag-line">
-                                        <h6>Tags:</h6>
-                                        <a href="javascript:void(0)">Scraf</a>,
-                                        <a href="javascript:void(0)">hoodie</a>,
-                                        <a href="javascript:void(0)">jacket</a>
-                                    </div>
-                                    <div class="kenne-social_link">
-                                        <ul>
-                                            <li class="facebook">
-                                                <a href="https://www.facebook.com" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                    <i class="fab fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="twitter">
-                                                <a href="https://twitter.com" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                    <i class="fab fa-twitter-square"></i>
-                                                </a>
-                                            </li>
-                                            <li class="youtube">
-                                                <a href="https://www.youtube.com" data-toggle="tooltip" target="_blank" title="Youtube">
-                                                    <i class="fab fa-youtube"></i>
-                                                </a>
-                                            </li>
-                                            <li class="google-plus">
-                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
-                                                    <i class="fab fa-google-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li class="instagram">
-                                                <a href="https://rss.com" data-toggle="tooltip" target="_blank" title="Instagram">
-                                                    <i class="fab fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="scroll-to-top" href=""><i class="ion-chevron-up"></i></a>
     </div>
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>

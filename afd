@@ -1,0 +1,68 @@
+[33mcommit dd4f3bb039c803b2998714f0e83b3f2c571045aa[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Bo <bo@gmail.com>
+Date:   Sat Oct 17 23:31:56 2020 +0700
+
+    them template frontend
+
+[33mcommit 89a42591c42111cf93a99608106785a9f46acf1e[m
+Merge: 019a452 65efada
+Author: Bo <bo@gmail.com>
+Date:   Sat Oct 17 22:56:28 2020 +0700
+
+    Merge branch 'master' of https://github.com/gacondaica2/github-webstoremobile into master
+
+[33mcommit 019a45203dbda8a7c5c3c92056c8c4f108dd8768[m
+Author: Bo <bo@gmail.com>
+Date:   Sat Oct 17 22:55:58 2020 +0700
+
+    them model
+
+[33mcommit 65efadac2d29a3e3777dfa516fc42f648c09c916[m
+Merge: 8dd9115 17fe333
+Author: Tấn Lộc <59618062+tanlocit9@users.noreply.github.com>
+Date:   Sat Oct 17 18:03:12 2020 +0700
+
+    Merge branch 'pr/1'
+
+[33mcommit 8dd9115af8d67a891f015a99b5a884238b03d85d[m
+Author: Tấn Lộc <59618062+tanlocit9@users.noreply.github.com>
+Date:   Sat Oct 17 17:54:24 2020 +0700
+
+    Update 2020_10_17_072327_create_table_media.php
+
+[33mcommit 4eaf1d26e89fa555262eea666a55e1368fd86d1d[m
+Author: Bo <bo@gmail.com>
+Date:   Sat Oct 17 16:22:58 2020 +0700
+
+    khoi tao gia tri db gia lap
+
+[33mcommit 2bbc66bb54ced3a599351989bddaa89f4042c2aa[m
+Merge: 6181048 62d4264
+Author: Bo <bo@gmail.com>
+Date:   Sat Oct 17 14:47:51 2020 +0700
+
+    Merge branch 'master' of https://github.com/gacondaica2/github-webstoremobile into master
+
+[33mcommit 618104804b3a0a9d90076e09a25db3a4a915b6f3[m
+Author: Bo <bo@gmail.com>
+Date:   Sat Oct 17 14:46:41 2020 +0700
+
+    them db
+
+[33mcommit 17fe33308797e5d344b95690fcfe39ab5b06cca0[m
+Author: tanlocit9 <59618062+tanlocit9@users.noreply.github.com>
+Date:   Fri Oct 16 09:49:46 2020 +0700
+
+    Create test
+
+[33mcommit 62d4264df336d217cde438e3e09e2c8b671a0031[m
+Author: gacondaica2 <61633158+gacondaica2@users.noreply.github.com>
+Date:   Wed Oct 14 13:06:48 2020 +0700
+
+    Create README.md
+
+[33mcommit e1e311fa480ca7c85067ff8b1c7e9812a9c66cc9[m[33m ([m[1;32mdev_loc[m[33m, [m[1;32mdev_linh[m[33m)[m
+Author: Bo <bo@gmail.com>
+Date:   Wed Oct 14 12:57:12 2020 +0700
+
+    khoi tao du an store mobile web
