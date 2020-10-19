@@ -9,16 +9,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/fontawesome-stars.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/ion-fonts.css">
-    <link rel="stylesheet" href="assets/css/plugins/slick.css">
-    <link rel="stylesheet" href="assets/css/plugins/animate.css">
-    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-    <link rel="stylesheet" href="assets/css/plugins/timecircles.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/fontawesome-stars.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/ion-fonts.css">
+    <link rel="stylesheet" href="/assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="/assets/css/plugins/animate.css">
+    <link rel="stylesheet" href="/assets/css/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="/assets/css/plugins/timecircles.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body class="template-color-2">
@@ -153,12 +153,12 @@
                                             <ul class="kenne-megamenu">
                                                     @foreach(\Helper::category() as $key => $item )
                                                         @if($key < 4)
-                                                        <li><span class="megamenu-title">{{ $item->title }}</span>
+                                                        <li><span class="megamenu-title"><a href="{{ route('category', $item->slug) }}">{{ $item->title }}</a></span>
                                                             @if( count($item->product) > 0)                                                         
                                                             <ul>
                                                                 @foreach($item->product as $key => $value )
                                                                 @if( $key < 5)
-                                                                <li><a href="shop-fullwidth.html">{{ $value->title }}</a></li>
+                                                                <li><a href="{{ route('category', $value->slug) }}">{{ $value->title }}</a></li>
                                                                 </li>
                                                                 @endif
                                                                 @endforeach
@@ -849,21 +849,21 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="assets/js/vendor/popper.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/slick.min.js"></script>
-    <script src="assets/js/plugins/jquery.barrating.min.js"></script>
-    <script src="assets/js/plugins/jquery.counterup.js"></script>
-    <script src="assets/js/plugins/jquery.nice-select.js"></script>
-    <script src="assets/js/plugins/jquery.sticky-sidebar.js"></script>
-    <script src="assets/js/plugins/jquery-ui.min.js"></script>
-    <script src="assets/js/plugins/jquery.ui.touch-punch.min.js"></script>
-    <script src="assets/js/plugins/theia-sticky-sidebar.min.js"></script>
-    <script src="assets/js/plugins/waypoints.min.js"></script>
-    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
-    <script src="assets/js/plugins/timecircles.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="/assets/js/vendor/popper.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/slick.min.js"></script>
+    <script src="/assets/js/plugins/jquery.barrating.min.js"></script>
+    <script src="/assets/js/plugins/jquery.counterup.js"></script>
+    <script src="/assets/js/plugins/jquery.nice-select.js"></script>
+    <script src="/assets/js/plugins/jquery.sticky-sidebar.js"></script>
+    <script src="/assets/js/plugins/jquery-ui.min.js"></script>
+    <script src="/assets/js/plugins/jquery.ui.touch-punch.min.js"></script>
+    <script src="/assets/js/plugins/theia-sticky-sidebar.min.js"></script>
+    <script src="/assets/js/plugins/waypoints.min.js"></script>
+    <script src="/assets/js/plugins/jquery.zoom.min.js"></script>
+    <script src="/assets/js/plugins/timecircles.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

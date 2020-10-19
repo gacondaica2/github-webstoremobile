@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,23 +8,23 @@ use Illuminate\Http\Request;
 use App\Model\Categories;
 use App\Model\Product;
 
-class HomeController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
         try {
-            $category = Categories::with([
-                'product'  => function($query) {}
-            ])->inRandomOrder()
-            ->paginate(4);
-            if( count($category) <= 0 ) throw new \Exception('Chưa có danh mục');
-            return view('frontend.page.home')->with([
-                'Categories' => $category
+            $category = Categories::where('slug', $slug)->first();
+            if( empty($category)) throw new \Exception('Danh mục không tồn tại!');
+            $records = Product::where('category_id', $category->id)->paginate(8);
+            if( count($records) <= 0) throw new \Exception('Không có sản phẩm');
+            return view('frontend.category.category')->with([
+                'records' => $records, 
+                'category' => $category
             ]);
         }catch(\Exception $e) {
             dd($e->getMessage());
@@ -38,6 +38,7 @@ class HomeController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**

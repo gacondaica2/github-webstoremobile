@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Model\Categories;
-use App\Model\Product;
-
-class HomeController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        try {
-            $category = Categories::with([
-                'product'  => function($query) {}
-            ])->inRandomOrder()
-            ->paginate(4);
-            if( count($category) <= 0 ) throw new \Exception('Chưa có danh mục');
-            return view('frontend.page.home')->with([
-                'Categories' => $category
-            ]);
-        }catch(\Exception $e) {
-            dd($e->getMessage());
-        }
+        //
     }
 
     /**
@@ -38,6 +24,7 @@ class HomeController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
