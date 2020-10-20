@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('category/{slug}', 'Frontend\CategoryController@index')->name('category');
+
 Route::get('/', function () {
-    return view('frontend/page/home');
+    return view('welcome');
 });
