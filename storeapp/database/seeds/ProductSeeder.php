@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 1,
-                'category_id' => 1,
+                'category_id' => 2,
             ),
             array(
                 'title' => 'iPhone 11 Chính hãng (VN/A)',
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 2,
-                'category_id' => 1,
+                'category_id' => 2,
             ),
             array(
                 'title' => 'iPhone 12 Pro Max Chính Hãng (VN/A)',

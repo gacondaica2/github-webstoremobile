@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-lg-12">               
                 <h3>{{ $category->title }}</h3>
+                <input class="title-category" type="hidden" value="{{ $category->slug}}">
                 <div class="shop-toolbar">
                     <div class="product-view-mode">
                         <a class="active grid-3" data-target="gridview-3" data-toggle="tooltip" data-placement="top" title="Grid View"><i class="fa fa-th"></i></a>

@@ -15,12 +15,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($slug)
+    public function index($slug, Request $request)
     {
         try {
             $category = Categories::where('slug', $slug)->first();
             if( empty($category)) throw new \Exception('Danh mục không tồn tại!');
-            $records = Product::where('category_id', $category->id)->paginate(8);
+            $records = Product::where('category_id', $category->id);
+            if(isset($request->type) && isset($request->orderBy)) {
+                $records = $records->orderBy($request->type, $request->orderBy);
+            } 
+            $records = $records->paginate(8);
             if( count($records) <= 0) throw new \Exception('Không có sản phẩm');
             return view('frontend.category.category')->with([
                 'records' => $records, 
@@ -36,9 +40,21 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug, Request $request)
     {
-        //
+        try {
+            $category = Categories::where('slug', $slug)->first();
+            if( empty($category)) throw new \Exception('Danh mục không tồn tại!');
+            $records = Product::where('category_id', $category->id);
+            if(isset($request->type) && isset($request->orderBy)) {
+                $records = $records->orderBy($request->type, $request->orderBy);
+            } 
+            $records = $records->paginate(8);
+            if( count($records) <= 0) throw new \Exception('Không có sản phẩm');
+            return response()->json(['message' => "success", 'records' => $records]);
+        }catch(\Exception $e) {
+            dd($e->getMessage());
+        }
     }
 
     /**

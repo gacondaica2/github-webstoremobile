@@ -3,8 +3,8 @@ use App\Model\Categories;
 class Helper {
     public static function Category() {
         return Categories::with([
-            'product' => function($query) {}
-        ])->get();
+            'childrent' => function($query) {}
+        ])->where('parent_id', 0)->get();
     }
 }
 ?>

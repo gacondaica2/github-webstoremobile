@@ -154,9 +154,9 @@
                                                     @foreach(\Helper::category() as $key => $item )
                                                         @if($key < 4)
                                                         <li><span class="megamenu-title"><a href="{{ route('category', $item->slug) }}">{{ $item->title }}</a></span>
-                                                            @if( count($item->product) > 0)                                                         
+                                                            @if( count($item->childrent) > 0)                                                         
                                                             <ul>
-                                                                @foreach($item->product as $key => $value )
+                                                                @foreach($item->childrent as $key => $value )
                                                                 @if( $key < 5)
                                                                 <li><a href="{{ route('category', $value->slug) }}">{{ $value->title }}</a></li>
                                                                 </li>
@@ -229,11 +229,11 @@
                                                                     @foreach(\Helper::category() as $key => $item )
                                                                         @if($key < 4)
                                                                         <li><span class="megamenu-title">{{ $item->title }}</span>
-                                                                            @if( count($item->product) > 0)                                                         
+                                                                            @if( count($item->childrent) > 0)                                                         
                                                                             <ul>
-                                                                                @foreach($item->product as $key => $value )
+                                                                                @foreach($item->childrent as $key => $value )
                                                                                 @if( $key < 5)
-                                                                                <li><a href="shop-fullwidth.html">{{ $value->title }}</a></li>
+                                                                                <li><a href="{{ route('category',$value->slug)}}">{{ $value->title }}</a></li>
                                                                                 </li>
                                                                                 @endif
                                                                                 @endforeach
@@ -373,8 +373,8 @@
                     <div class="container">
                         <a href="#" class="btn-close white-close_btn"><i class="ion-android-close"></i></a>
                         <div class="offcanvas-inner_logo">
-                            <a href="index.html">
-                                <img src="assets/images/menu/logo/1.png" alt="Header Logo">
+                            <a href="{{ route('home') }}">
+                                <img src="/assets/images/menu/logo/1.png" alt="Header Logo">
                             </a>
                         </div>
                         <nav class="offcanvas-navigation">
@@ -865,5 +865,6 @@
     <script src="/assets/js/plugins/jquery.zoom.min.js"></script>
     <script src="/assets/js/plugins/timecircles.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/category/index.js"></script>
 </body>
 </html>

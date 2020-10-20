@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
-Route::get('category/{slug}', 'Frontend\CategoryController@index')->name('category');
+Route::get('/category/{slug}', 'Frontend\CategoryController@index')->name('category');
+Route::get('/category/abc/{slug}', 'Frontend\CategoryController@create')->name('category2');
