@@ -1,3 +1,4 @@
-
 storeapp/.env.example
 storeapp/routes/web.php
+storeapp/.env.example
+*.example
