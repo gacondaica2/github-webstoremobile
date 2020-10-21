@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Product;
 
 class ProductController extends Controller
 {
@@ -12,9 +13,32 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug, Request $request)
     {
-        //
+        try {
+            $record = Product::where('slug', $slug)->first();
+            $test = json_decode( $record->option);
+            if( empty($test)) throw new \Exception('Không có thông tin cấu hình!');
+            $setting = [
+                'Hãng sản xuất'         => $test->Manufacturer,
+                'Kích thước'            => $test->Size,
+                'Trọng lượng'           => $test->Weight,
+                'Bộ nhớ đệm / Ram'      => $test->Ram,
+                'Bộ nhớ trong'          => $test->Internalmemory,
+                'Loại SIM'              => $test->SIM,
+                'Loại màn hình'         => $test->screen,
+                'Kích thước màn hình'   => $test->Screensize,
+                'Độ phân giải màn hình' => $test->Screenresolution,
+                'Hệ điều hành'          => $test->Operatingsystem,
+            ];
+            if( empty($record)) throw new \Exception('Sản phẩm không tồn tại!');
+            return view('frontend.product.product')->with([
+                'record' => $record,
+                'setting' => $setting
+            ]);
+        }catch(\Exception $e){
+            dd($e->getMessage());
+        }
     }
 
     /**

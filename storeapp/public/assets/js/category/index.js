@@ -13,7 +13,7 @@ $(document).ready(function() {
         title = $('.title-category').val();
         var items = "";
         $.ajax({
-            url: '/category/abc/' +title,
+            url: '/danh-muc/api/' + title,
             data: data,
             success : function(response) {
                 if( response.message === "success" && response.records.data.length > 0) {

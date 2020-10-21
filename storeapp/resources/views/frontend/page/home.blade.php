@@ -1,6 +1,7 @@
 @extends('frontend.template')
 @section('content')
 
+@if(count( \Helper::BestSale()))
 <div class="list-product_area">
     <div class="container">
         <div class="row">
@@ -30,23 +31,26 @@
                 "slidesToShow": 1
                 }}
             ]'>
-
+            @foreach( \Helper::BestSale() as $item)
                     <div class="product-item">
                         <div class="single-product">
                             <div class="product-img">
-                                <a href="single-product.html">
-                                    <img class="primary-img" src="assets/images/product/8-1.jpg" alt="Kenne's Product Image">
+                                <a href="{{ route('detailItem',$item->slug) }}">
+                                    <img class="primary-img" src="/assets/images/product/8-1.jpg" alt="Kenne's Product Image">
                                 </a>
-                                <span class="sticker-2">-10%</span>
+                                @if( $item->price_sale > 0 && $item->price_sale < $item->price)
+                                <span class="sticker-2">- {{ round( ($item->price - $item->price_sale) / $item->price * 100 )}}%</span>
+                                @endif
                             </div>
                             <div class="product-content">
                                 <div class="product-desc_info">
-                                    <span class="manufacture-product">hoodie, jacket</span>
-                                    <h3 class="product-name"><a href="single-product.html">Quibusdam ratione</a>
+                                    <h3 class="product-name"><a href="{{ route('detailItem',$item->slug) }}">{{ $item->title }}</a>
                                     </h3>
                                     <div class="price-box">
-                                        <span class="new-price">$46.91</span>
-                                        <span class="old-price">$50.99</span>
+                                    @if( $item->price_sale > 0 && $item->price_sale < $item->price )
+                                        <span class="new-price">{{ number_format($item->price_sale) }}₫</span>
+                                    @endif
+                                        <span class="old-price">{{ number_format($item->price) }}₫</span>
                                     </div>
                                 </div>
                                 <div class="add-actions">
@@ -60,11 +64,13 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endif
 @if(isset($Categories) && count($Categories) > 0 )
     @foreach($Categories as $item)
     @if( count($item->product) > 0)
@@ -101,7 +107,7 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="single-product.html">
-                                            <img class="primary-img" src="assets/images/product/1-1.jpg" alt="Kenne's Product Image">
+                                            <img class="primary-img" src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -154,22 +160,22 @@
                             "asNavFor": ".sp-img_slider-nav"
                             }'>
                                 <div class="single-slide red">
-                                    <img src="assets/images/product/1-1.jpg" alt="Kenne's Product Image">
+                                    <img src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
                                 </div>
                                 <div class="single-slide orange">
-                                    <img src="assets/images/product/1-2.jpg" alt="Kenne's Product Image">
+                                    <img src="/assets/images/product/1-2.jpg" alt="Kenne's Product Image">
                                 </div>
                                 <div class="single-slide brown">
-                                    <img src="assets/images/product/2-1.jpg" alt="Kenne's Product Image">
+                                    <img src="/assets/images/product/2-1.jpg" alt="Kenne's Product Image">
                                 </div>
                                 <div class="single-slide umber">
-                                    <img src="assets/images/product/2-2.jpg" alt="Kenne's Product Image">
+                                    <img src="/assets/images/product/2-2.jpg" alt="Kenne's Product Image">
                                 </div>
                                 <div class="single-slide black">
-                                    <img src="assets/images/product/3-1.jpg" alt="Kenne's Product Image">
+                                    <img src="/assets/images/product/3-1.jpg" alt="Kenne's Product Image">
                                 </div>
                                 <div class="single-slide golden">
-                                    <img src="assets/images/product/3-2.jpg" alt="Kenne's Product Image">
+                                    <img src="/assets/images/product/3-2.jpg" alt="Kenne's Product Image">
                                 </div>
                             </div>
                             <div class="kenne-element-carousel sp-img_slider-nav arrow-style-2 arrow-style-3" data-slick-options='{
@@ -186,22 +192,22 @@
                             {"breakpoint":575, "settings": {"slidesToShow": 2}}
                         ]'>
                                 <div class="single-slide red">
-                                    <img src="assets/images/product/1-1.jpg" alt="Kenne's Product Thumnail">
+                                    <img src="/assets/images/product/1-1.jpg" alt="Kenne's Product Thumnail">
                                 </div>
                                 <div class="single-slide orange">
-                                    <img src="assets/images/product/1-2.jpg" alt="Kenne's Product Thumnail">
+                                    <img src="/assets/images/product/1-2.jpg" alt="Kenne's Product Thumnail">
                                 </div>
                                 <div class="single-slide brown">
-                                    <img src="assets/images/product/2-1.jpg" alt="Kenne's Product Thumnail">
+                                    <img src="/assets/images/product/2-1.jpg" alt="Kenne's Product Thumnail">
                                 </div>
                                 <div class="single-slide umber">
-                                    <img src="assets/images/product/2-2.jpg" alt="Kenne's Product Thumnail">
+                                    <img src="/assets/images/product/2-2.jpg" alt="Kenne's Product Thumnail">
                                 </div>
                                 <div class="single-slide black">
-                                    <img src="assets/images/product/3-1.jpg" alt="Kenne's Product Thumnail">
+                                    <img src="/assets/images/product/3-1.jpg" alt="Kenne's Product Thumnail">
                                 </div>
                                 <div class="single-slide golden">
-                                    <img src="assets/images/product/3-2.jpg" alt="Kenne's Product Thumnail">
+                                    <img src="/assets/images/product/3-2.jpg" alt="Kenne's Product Thumnail">
                                 </div>
                             </div>
                         </div>
