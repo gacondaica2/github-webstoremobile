@@ -10,4 +10,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+<<<<<<< Updated upstream
 /routes/web.php
+=======
+*
+!.gitignore
+>>>>>>> Stashed changes
