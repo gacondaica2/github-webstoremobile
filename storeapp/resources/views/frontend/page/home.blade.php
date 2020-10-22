@@ -55,9 +55,9 @@
                                 </div>
                                 <div class="add-actions">
                                     <ul>
-                                        <li><a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-ios-heart-outline"></i></a>
+                                        <li><a href="{{ route('addTocart',$item->slug) }}" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-ios-heart-outline"></i></a>
                                         </li>
-                                        <li><a href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To cart">Add to cart</a>
+                                        <li><a href="{{ route('addTocart',$item->slug) }}" data-toggle="tooltip" data-placement="top" title="Add To cart">Add to cart</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="product-desc_info">
-                                            <h3 class="product-name"><a href="single-product.html">{{ $value->title }}</a></h3>
+                                            <h3 class="product-name"><a href="{{ route('detailItem', $value->slug) }}">{{ $value->title }}</a></h3>
                                             <div class="price-box">
                                                 @if( $value->price > $value->price_sale && $value->price_sale > 0)
                                                 <span class="new-price">{{ number_format($value->price_sale ) }}₫</span>

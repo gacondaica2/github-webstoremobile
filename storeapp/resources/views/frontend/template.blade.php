@@ -94,7 +94,7 @@
                                         <li class="minicart-wrap">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <div class="minicart-count_area">
-                                                    <span class="item-count">03</span>
+                                                    <span class="item-count">{{ Cart::getTotalQuantity() }}</span>
                                                     <i class="ion-bag"></i>
                                                 </div>
                                                 <div class="minicart-front_text">
@@ -115,7 +115,7 @@
                                         <li class="minicart-wrap">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <div class="minicart-count_area">
-                                                    <span class="item-count">03</span>
+                                                    <span class="item-count">{{ Cart::getTotalQuantity() }}</span>
                                                     <i class="ion-bag"></i>
                                                 </div>
                                             </a>
@@ -286,7 +286,7 @@
                                                 <li class="minicart-wrap">
                                                     <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                         <div class="minicart-count_area">
-                                                            <span class="item-count">03</span>
+                                                            <span class="item-count">{{ Cart::getTotalQuantity() }}</span>
                                                             <i class="ion-bag"></i>
                                                         </div>
                                                     </a>
@@ -312,58 +312,37 @@
             </div>
             <div class="offcanvas-minicart_wrapper" id="miniCart">
                 <div class="offcanvas-menu-inner">
-                    <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
                     <div class="minicart-content">
                         <div class="minicart-heading">
-                            <h4>Shopping Cart</h4>
+                            <h4>Giỏ Hàng</h4>
                         </div>
+                        @if( Cart::getTotalQuantity() > 0)
                         <ul class="minicart-list">
+                            @foreach( Cart::getContent() as $item_cart)
                             <li class="minicart-product">
-                                <a class="product-item_remove" href="javascript:void(0)"><i
+                                <a class="product-item_remove" href="{{ route('delete_item_cart', $item_cart->id) }}"><i
                                     class="ion-android-close"></i></a>
                                 <div class="product-item_img">
                                     <img src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
                                 </div>
                                 <div class="product-item_content">
-                                    <a class="product-item_title" href="shop-left-sidebar.html">Autem ipsa ad</a>
-                                    <span class="product-item_quantity">1 x $145.80</span>
+                                    <a class="product-item_title" href="shop-left-sidebar.html">{{ $item_cart->name }}</a>
+                                    <span class="product-item_quantity">{{ $item_cart->quantity }} x {{ number_format($item_cart->price)}}₫</span>
                                 </div>
                             </li>
-                            <li class="minicart-product">
-                                <a class="product-item_remove" href="javascript:void(0)"><i
-                                    class="ion-android-close"></i></a>
-                                <div class="product-item_img">
-                                    <img src="/assets/images/product/2-1.jpg" alt="Kenne's Product Image">
-                                </div>
-                                <div class="product-item_content">
-                                    <a class="product-item_title" href="shop-left-sidebar.html">Tenetur illum
-                                        amet</a>
-                                    <span class="product-item_quantity">1 x $150.80</span>
-                                </div>
-                            </li>
-                            <li class="minicart-product">
-                                <a class="product-item_remove" href="javascript:void(0)"><i
-                                    class="ion-android-close"></i></a>
-                                <div class="product-item_img">
-                                    <img src="/assets/images/product/3-1.jpg" alt="Kenne's Product Image">
-                                </div>
-                                <div class="product-item_content">
-                                    <a class="product-item_title" href="shop-left-sidebar.html">Non doloremque
-                                        placeat</a>
-                                    <span class="product-item_quantity">1 x $165.80</span>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
+                        @endif
                     </div>
                     <div class="minicart-item_total">
-                        <span>Subtotal</span>
-                        <span class="ammount">$462.4‬0</span>
+                        <span>Tổng tiền</span>
+                        <span class="ammount">{{  number_format(Cart::getSubtotal()) }}₫</span>
                     </div>
                     <div class="minicart-btn_area">
-                        <a href="cart.html" class="kenne-btn kenne-btn_fullwidth">Minicart</a>
+                        <a href="{{ route('detail_cart') }}" class="kenne-btn kenne-btn_fullwidth">Minicart</a>
                     </div>
                     <div class="minicart-btn_area">
-                        <a href="checkout.html" class="kenne-btn kenne-btn_fullwidth">Checkout</a>
+                        <a href="{{ route('checkout')}}" class="kenne-btn kenne-btn_fullwidth">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -610,60 +589,6 @@
                     </div>
                 </div>
             </div>
-            <div class="offcanvas-menu_wrapper" id="offcanvasMenu">
-                <div class="offcanvas-menu-inner">
-                    <a href="#" class="btn-close"><i class="ion-android-close"></i></a>
-                    <div class="offcanvas-inner_logo">
-                        <a href="shop-left-sidebar.html">
-                            <img src="/assets/images/menu/logo/1.png" alt="Munoz's Offcanvas Logo">
-                        </a>
-                    </div>
-                    <div class="short-desc">
-                        <p>We are a team of designers and developers that create high quality HTML Template &
-                            Woocommerce,
-                            Shopify Themes.
-                        </p>
-                    </div>
-                    <div class="offcanvas-component">
-                        <span class="offcanvas-component_title">Tài khoản</span>
-                        <ul class="offcanvas-component_menu">
-                            <li><a href="my-account.html">Đăng ký</a></li>
-                            <li><a href="login-register.html">Đăng nhập</a></li>
-                        </ul>
-                    </div>
-                    <div class="offcanvas-inner-social_link">
-                        <div class="kenne-social_link">
-                            <ul>
-                                <li class="facebook">
-                                    <a href="https://www.facebook.com" data-toggle="tooltip" target="_blank" title="Facebook">
-                                        <i class="fab fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="twitter">
-                                    <a href="https://twitter.com" data-toggle="tooltip" target="_blank" title="Twitter">
-                                        <i class="fab fa-twitter-square"></i>
-                                    </a>
-                                </li>
-                                <li class="youtube">
-                                    <a href="https://www.youtube.com" data-toggle="tooltip" target="_blank" title="Youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </li>
-                                <li class="google-plus">
-                                    <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
-                                        <i class="fab fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li class="instagram">
-                                    <a href="https://rss.com" data-toggle="tooltip" target="_blank" title="Instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="offcanvas-search_wrapper" id="searchBar">
                 <div class="offcanvas-menu-inner">
                     <div class="container">
@@ -838,5 +763,6 @@
     <script src="/assets/js/plugins/timecircles.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/category/index.js"></script>
+    <script src="/assets/js/cart/index.js"></script>
 </body>
 </html>
