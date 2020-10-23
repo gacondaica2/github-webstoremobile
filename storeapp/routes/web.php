@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('category/{slug}', 'Frontend\CategoryController@index')->name('category');
 //Backend
 Route::get('/admin', function () {
-    return view('backend/layouts/dashboard');
+    return view('backend/layouts/adminHome');
 })->name('dashboard');
 
 //fontend
