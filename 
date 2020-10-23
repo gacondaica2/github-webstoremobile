@@ -1,0 +1,29 @@
+[33mcommit d7f8d19fbf4a76e3bf42c56e6d1f9e0052e6a482[m[33m ([m[1;36mHEAD -> [m[1;32mbackend[m[33m, [m[1;31morigin/backend[m[33m)[m
+Author: Loc <tanlocit9@gmail.com>
+Date:   Fri Oct 23 13:01:39 2020 +0700
+
+    update web.php
+
+[33mcommit 916d3f5746a58d1a7d287184c72caaf929c8ae4f[m
+Author: Loc <tanlocit9@gmail.com>
+Date:   Thu Oct 22 01:21:59 2020 +0700
+
+    Update composer.lock
+
+[33mcommit 7bf548ee6113c4ec0d7dd31916b9820521d9faa5[m
+Author: Loc <tanlocit9@gmail.com>
+Date:   Wed Oct 21 23:56:17 2020 +0700
+
+    Update .gitignore
+
+[33mcommit 79af35ac60476731dabe8f2bb34ce0d25f9daaf2[m
+Author: Loc <tanlocit9@gmail.com>
+Date:   Wed Oct 21 23:55:21 2020 +0700
+
+    Update .gitignore
+
+[33mcommit b3f35a03df3fe5102a0716cf6624c63a6e070eab[m
+Author: Loc <tanlocit9@gmail.com>
+Date:   Tue Oct 20 11:35:02 2020 +0700
+
+    update ignore
