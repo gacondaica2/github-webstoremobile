@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('category/{slug}', 'Frontend\CategoryController@index')->name('category');
-
-Route::get('/', function () {
+//Backend
+Route::get('/admin', function () {
     return view('backend/layouts/dashboard');
 })->name('dashboard');
 
-Route::get('/content', function () {
-    return view('backend/template');
-})->name('template');
 //fontend
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 Route::get('/danh-muc/{slug}', 'Frontend\CategoryController@index')->name('category');
