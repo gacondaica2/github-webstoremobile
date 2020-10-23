@@ -16,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 //Route::get('category/{slug}', 'Frontend\CategoryController@index')->name('category');
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('backend/layouts/dashboard');
+})->name('dashboard');
+
+Route::get('/content', function () {
+    return view('backend/template');
+})->name('template');
