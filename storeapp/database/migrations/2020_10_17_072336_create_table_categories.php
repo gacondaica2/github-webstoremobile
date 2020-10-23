@@ -18,6 +18,7 @@ class CreateTableCategories extends Migration
             $table->string('title')->comment('tieu de');
             $table->string('slug')->comment('tieu de');
             $table->string('status')->comment('trang thai');
+            $table->string('parent_id')->comment('quan he cha con');
             $table->timestamps();
         });
     }

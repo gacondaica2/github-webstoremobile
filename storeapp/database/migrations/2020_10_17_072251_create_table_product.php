@@ -20,12 +20,15 @@ class CreateTableProduct extends Migration
             $table->string('sku', 10)->comment('ma san pham');
             $table->integer('price')->comment('gia san pham');
             $table->integer('price_sale')->comment('gia khuyen mai');
+            $table->longText('content')->nullable()->comment('noi dung san');
             $table->integer('qty')->comment('so luong');
             $table->integer('weight')->comment('khoi luong');
             $table->integer('height')->comment('chieu cao');
             $table->integer('width')->comment('chieu rong');
             $table->integer('media_id')->comment('media id ');
             $table->integer('category_id')->comment('category id');
+            $table->text('option')->nullable()->comment('thong so san pham');
+            $table->string('description', 255)->comment('mo ta so bo');
             $table->timestamps();
         });
     }
