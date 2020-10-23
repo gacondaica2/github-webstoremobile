@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order_detail extends Model
 {
-    protected $table = 'order_history';
+    protected $table = 'order_detail';
+
+    public function Order() {
+        return $this->hasOne('App\Model\Order','id','order_id');
+    }
 }

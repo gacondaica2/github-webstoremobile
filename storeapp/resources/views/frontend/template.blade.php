@@ -44,10 +44,11 @@
                                         <li>
                                             <a href="{{ route('my_account') }}">Tài khoản</a>
                                         </li>
-                                        @endif
+                                        @else
                                         <li>
                                             <a href="{{ route('login') }}">Đăng nhập | Đăng ký</a>
                                         </li>
+                                        @endif
                                         <li>
                                             <a href="checkout.html">Thanh toán</a>
                                         </li>
@@ -64,7 +65,7 @@
                         <div class="col-lg-12">
                             <div class="header-middle_nav">
                                 <div class="header-logo_area">
-                                    <a href="index.html">
+                                    <a href="{{ route('home') }}">
                                         <img src="/assets/images/menu/logo/1.png" alt="Header Logo">
                                     </a>
                                 </div>
@@ -94,7 +95,7 @@
                                         <li class="minicart-wrap">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <div class="minicart-count_area">
-                                                    <span class="item-count">{{ Cart::getTotalQuantity() }}</span>
+                                                    <span class="item-count"></span>
                                                     <i class="ion-bag"></i>
                                                 </div>
                                                 <div class="minicart-front_text">
@@ -316,11 +317,10 @@
                         <div class="minicart-heading">
                             <h4>Giỏ Hàng</h4>
                         </div>
-                        @if( Cart::getTotalQuantity() > 0)
                         <ul class="minicart-list">
                             @foreach( Cart::getContent() as $item_cart)
                             <li class="minicart-product">
-                                <a class="product-item_remove" href="{{ route('delete_item_cart', $item_cart->id) }}"><i
+                                <a class="product-item_remove" data-id="{{ $item->id }}"><i
                                     class="ion-android-close"></i></a>
                                 <div class="product-item_img">
                                     <img src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
@@ -332,7 +332,6 @@
                             </li>
                             @endforeach
                         </ul>
-                        @endif
                     </div>
                     <div class="minicart-item_total">
                         <span>Tổng tiền</span>
@@ -545,12 +544,13 @@
                                                 <span class="mm-text">Tài khoản</span>
                                             </a>
                                         </li>
-                                        @endif
+                                        @else 
                                         <li>
                                             <a href="{{ route('login') }}">
                                                 <span class="mm-text">Đăng nhập | Đăng ký</span>
                                             </a>
                                         </li>
+                                        @endif
                                         <li>
                                             <a href="cart.html">
                                                 <span class="mm-text">Giỏ hàng</span>

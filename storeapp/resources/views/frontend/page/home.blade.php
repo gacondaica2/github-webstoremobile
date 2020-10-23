@@ -57,8 +57,7 @@
                                     <ul>
                                         <li><a href="{{ route('addTocart',$item->slug) }}" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-ios-heart-outline"></i></a>
                                         </li>
-                                        <li><a href="{{ route('addTocart',$item->slug) }}" data-toggle="tooltip" data-placement="top" title="Add To cart">Add to cart</a>
-                                        </li>
+                                        <li class="btn add-to-cart" data-id="{{ $item->id }}">Add to cart</li>
                                     </ul>
                                 </div>
                             </div>

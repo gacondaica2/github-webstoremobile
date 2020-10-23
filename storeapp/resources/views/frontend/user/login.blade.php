@@ -3,11 +3,7 @@
 
 <div class="kenne-login-register_area">
     <div class="container">
-        @if( Session::has('messages'))
-        <div class="alert {{ Session::get('color') }}" >
-            <strong> {{ Session::get('messages') }}</strong>
-        </div>
-        @endif
+        @include('frontend.messages.messages')
         <div class="row">
             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
                 <!-- Login Form s-->

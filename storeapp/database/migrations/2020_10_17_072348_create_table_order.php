@@ -15,13 +15,12 @@ class CreateTableOrder extends Migration
     {
         Schema::create('Order', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->comment('id nguoi mua');
+            $table->string('user_id')->nullable()->comment('id nguoi mua');
             $table->string('sub_total')->comment('tong tien');
-            $table->string('delivery_id')->comment('id delivery');
             $table->string('total')->comment('tong tien don hang');
             $table->string('paymod')->comment('hinh thuc thanh toan');
             $table->string('status')->comment('trang thai');
-            $table->string('note')->comment('ghi chu');
+            $table->string('note')->nullable()->comment('ghi chu');
             $table->timestamps();
         });
     }

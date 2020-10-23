@@ -62,11 +62,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-            if( !isset($request->email) || !isset($request->password))  throw new \Exception('chua nhap tai khoan mat khau');
+            if( !isset($request->email) || !isset($request->password))  throw new \Exception('Chưa nhập thông tin tài khoản hoặc mật khẩu');
             $information = $request->only('email', 'password');
-            if( Auth::attempt($information)) {
-                return redirect()->route('my_account');
-            }
+            if( !Auth::attempt($information)) throw new \Exception('Tài khoản hoặc mật khẩu không chính xác');
+            return redirect()->route('my_account');
         }catch(\Exception $e) {
             return redirect()->back()->with([      
                 "messages" => $e->getMessage(), 
