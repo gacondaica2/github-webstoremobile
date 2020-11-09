@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Model\Categories;
 use App\Model\Product;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -20,14 +22,19 @@ class HomeController extends Controller
         try {
             $category = Categories::with([
                 'product'  => function($query) {}
-            ])->inRandomOrder()
-            ->paginate(4);
+            ])->where('status', 1)->get();
             if( count($category) <= 0 ) throw new \Exception('Chưa có danh mục');
+            SEOMeta::setTitle('home');
+            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setCanonical('https://storemobile.xyz');
             return view('frontend.page.home')->with([
                 'Categories' => $category
             ]);
         }catch(\Exception $e) {
-            dd($e->getMessage());
+            return redirect()->back()->with([      
+                "messages"  => $e->getMessage(), 
+                'color'     => 'alert-danger'
+            ]);
         }
     }
 
@@ -94,5 +101,12 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function email() {
+        Mail::send('frontend.page.home', array('name'=>'nguyen linh','email'=>'dankhanhpro@gmail.com', 'content'=>'test email'), function($message){
+	        $message->to('dankhanhpro@gmail.com', 'Visitor')->subject('Visitor Feedback!');
+        });
+        dd('Gửi mail thành công');
     }
 }

@@ -2,10 +2,13 @@
 @section('content')
 <div class="kenne-content_wrapper">
     <div class="container">
+    @include('frontend.messages.messages')
         <div class="row">
-            <div class="col-lg-12">               
+            <div class="col-lg-12">    
+                @if( isset($category))           
                 <h3>{{ $category->title }}</h3>
                 <input class="title-category" type="hidden" value="{{ $category->slug}}">
+                @endif
                 <div class="shop-toolbar">
                     <div class="product-view-mode">
                         <a class="active grid-3" data-target="gridview-3" data-toggle="tooltip" data-placement="top" title="Grid View"><i class="fa fa-th"></i></a>
@@ -32,22 +35,17 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="{{ route('detailItem',$item->slug) }}">
-                                            <img class="primary-img" src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
+                                            <img width="300px" height="300px" class="primary-img" src="{{ $item->img }}" alt="Kenne's Product Image">
                                         </a>
                                         @if( $item->price_sale > 0 && $item->price_sale < $item->price)
                                         <span class="sticker">- {{ round( ($item->price - $item->price_sale) / $item->price * 100 )}}%</span>
                                         @endif
                                         <div class="add-actions">
                                             <ul>
-                                                <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="right" title="Quick View"><i class="ion-ios-search"></i></a>
+                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Thêm vào danh sách yêu thích"><i
+                                                    class="ion-ios-heart-outline"></i></a>
                                                 </li>
-                                                <li><a href="wishlist.html" data-toggle="tooltip" data-placement="right" title="Add To Wishlist"><i
-                                                        class="ion-ios-heart-outline"></i></a>
-                                                </li>
-                                                <li><a href="compare.html" data-toggle="tooltip" data-placement="right" title="Add To Compare"><i
-                                                        class="ion-ios-reload"></i></a>
-                                                </li>
-                                                <li><a href="cart.html" data-toggle="tooltip" data-placement="right" title="Add To cart"><i class="ion-bag"></i></a>
+                                                <li><p class="btn add-to-cart" data-toggle="tooltip" data-placement="right" title="Thêm giỏ hàng" data-id="{{ $item->id }}" ><i class="ion-bag"></i></p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -79,7 +77,7 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <a href="{{ route('detailItem',$item->slug) }}">
-                                            <img src="/assets/images/product/1-2.jpg" alt="Kenne's Product Image">
+                                            <img width="300px" height="300px" src="{{ $item->img }}" alt="Kenne's Product Image">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -102,7 +100,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-short_desc">
-                                                <p>{{ $item->content }}</p>
+                                                <p>{!! $item->description !!}</p>
                                             </div>
                                         </div>
                                         <div class="add-actions">
@@ -123,6 +121,10 @@
                             </div>
                         </div>
                         @endforeach
+                    @else 
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <h4>Chưa có sản phẩm</h4>
+                    </div>
                     @endif
                 </div>          
                 <div> {{ $records->links() }}</div>
@@ -130,74 +132,5 @@
         </div>
     </div>
 </div>
-@if(count( \Helper::BestSale()))
-<div class="list-product_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h3>Sản phẩm bán chạy</span></h3>
-                    <div class="list-product_arrow"></div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="kenne-element-carousel list-product_slider slider-nav" data-slick-options='{
-                "slidesToShow": 3,
-                "slidesToScroll": 1,
-                "infinite": false,
-                "arrows": true,
-                "dots": false,
-                "spaceBetween": 30,
-                "appendArrows": ".list-product_arrow"
-                }' data-slick-responsive='[
-                {"breakpoint":1200, "settings": {
-                "slidesToShow": 2
-                }},
-                {"breakpoint":768, "settings": {
-                "slidesToShow": 1
-                }},
-                {"breakpoint":575, "settings": {
-                "slidesToShow": 1
-                }}
-            ]'>
-            @foreach( \Helper::BestSale() as $item)
-                    <div class="product-item">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="{{ route('detailItem',$item->slug) }}">
-                                    <img class="primary-img" src="/assets/images/product/8-1.jpg" alt="Kenne's Product Image">
-                                </a>
-                                @if( $item->price_sale > 0 && $item->price_sale < $item->price)
-                                <span class="sticker-2">- {{ round( ($item->price - $item->price_sale) / $item->price * 100 )}}%</span>
-                                @endif
-                            </div>
-                            <div class="product-content">
-                                <div class="product-desc_info">
-                                    <h3 class="product-name"><a href="{{ route('detailItem',$item->slug) }}">{{ $item->title }}</a>
-                                    </h3>
-                                    <div class="price-box">
-                                    @if( $item->price_sale > 0 && $item->price_sale < $item->price )
-                                        <span class="new-price">{{ number_format($item->price_sale) }}₫</span>
-                                    @endif
-                                        <span class="old-price">{{ number_format($item->price) }}₫</span>
-                                    </div>
-                                </div>
-                                <div class="add-actions">
-                                    <ul>
-                                        <li><a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                        </li>
-                                        <li><a href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To cart">Add to cart</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
+@include('frontend.sale.bestsale')
 @endsection

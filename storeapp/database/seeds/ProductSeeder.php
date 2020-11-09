@@ -12,16 +12,50 @@ class ProductSeeder extends Seeder
     public function run()
     {
          $data = [
-        'Manufacturer' => "apple",
-        'Size' => "150.9mm - 75.7mm - 8.3mm",
-        'Weight' => "194 g",
-        'Ram' =>"4 GB",
-        'Internalmemory' => "64 GB",
-        'SIM' => "Nano-SIM + eSIM",
-        'screen' => "IPS LCD",
-        'Screensize' =>"6.1 inches",
-        'Screenresolution' => "1792 x 828 pixel",
-        'Operatingsystem' =>"iOS"
+            'manufacturer' => (object)[
+                'value'    => 'Iphone',
+                'name'     => 'Hãng sản xuất'
+            ],
+            'size'       => (object)[
+                'value'  => '5.7inch',
+                'name'   => 'kích cỡ'
+            ],
+            'internalmemory' => (object)[
+                'value'  => '64GB',
+                'name'   => 'Bộ nhớ trong'
+            ],
+            'ram'        => (object)[
+                'value'  => '16GB',
+                'name'   => 'Ram'
+            ],
+            'weight'     => (object)[
+                'value'  => '200gram',
+                'name'   => 'Khối lượng'
+            ],
+            'sim'        => (object)[
+                'value'  => 'etc',
+                'name'   => 'Sim'
+            ],
+            'screen'     => (object)[
+                'value'  => 'full HD',
+                'name'   => 'Màn hình'
+            ],
+            'screensize'        => (object)[
+                'value'  => '12x24',
+                'name'   => 'Kích cỡ màn hình'
+            ],
+            'screenresolution'  => (object)[
+                'value'  => 'Full HD',
+                'name'   => 'Độ phân giải'
+            ],
+            'operatingsystem'   => (object)[
+                'value' => 'IOS 14',
+                'name'  => 'Hệ điều hành'
+            ],
+            'pin'       => (object)[
+                'value' => '5000mA',
+                'name'  => 'pin'
+            ]
         ];
         $content = "iPhone 11 chính hãng VN/A – Chiếc điện thoại nhiều màu sắc, camera nâng cấp
         iPhone 11 là model có nhiều màu sắc nhất và có giá rẻ nhất trong bộ 3 iPhone 11 series được Apple ra mắt trong năm 2019. Bên cạnh đó, cấu hình iPhone 11 cũng được nâng cấp đặc biệt về cụm camera sau và Face ID, viên pin dung lượng lớn hơn.       
@@ -40,11 +74,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 1,                
-                'option' => json_encode($data),
+                'media_id' => [1,2,3,4],                
+                'option' => $data,
                 'content' => $content,
                 'category_id' => 2,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone 11 Chính hãng (VN/A)',
@@ -57,9 +92,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 2,
-                'category_id' => 2,'option' => json_encode($data),
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone 12 Pro Max Chính Hãng (VN/A)',
@@ -72,9 +108,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 3,
-                'category_id' => 1,'option' => json_encode($data),
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone 11 Pro Max Chính hãng (VN/A)',
@@ -87,9 +124,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 4,
-                'category_id' => 1,'option' => json_encode($data),
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone 12 Mini Chính hãng (VN/A)',
@@ -103,9 +141,10 @@ class ProductSeeder extends Seeder
                 'width' => 1,
                 'media_id' => 5,
                 'category_id' => 1,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Apple iPhone XR 64GB Chính hãng (VN/A)',
@@ -118,9 +157,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 6,
-                'category_id' => 1,'option' => json_encode($data),
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone 11 Pro Chính hãng (VN/A)',
@@ -133,9 +173,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 7,
-                'category_id' => 1,'option' => json_encode($data),
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone 11 128GB Chính hãng (VN/A)',
@@ -148,9 +189,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 8,
-                'category_id' => 1,'option' => json_encode($data),
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Apple iPhone 8 Plus 128GB Chính hãng (mã VN/A)',
@@ -163,9 +205,10 @@ class ProductSeeder extends Seeder
                 'height' => 1,
                 'width' => 1,
                 'media_id' => 9,
-                'category_id' => 1,'option' => json_encode($data),
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'iPhone SE 2020 Chính hãng VN/A',
@@ -177,10 +220,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 1,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 1,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy A71',
@@ -192,10 +236,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy Note 10 Lite',
@@ -207,10 +252,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy Note 20 Ultra',
@@ -222,10 +268,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy Note 10+ (Plus)',
@@ -237,10 +284,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy Note 10',
@@ -252,10 +300,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy Note 20',
@@ -267,10 +316,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy A51',
@@ -282,10 +332,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy A21s',
@@ -297,10 +348,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Samsung Galaxy Note 20 Ultra 5G',
@@ -312,10 +364,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 2,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 2,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo Reno4',
@@ -327,10 +380,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo A92',
@@ -342,10 +396,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo A53',
@@ -357,10 +412,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo Reno4 Pro',
@@ -372,10 +428,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo Find X2',
@@ -387,10 +444,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'OPPO A93',
@@ -402,10 +460,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo Reno 2F',
@@ -417,10 +476,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo Reno 3',
@@ -432,10 +492,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'OPPO A12 3GB',
@@ -447,10 +508,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Oppo A52',
@@ -462,10 +524,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 3,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 3,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Redmi Note 9 Pro',
@@ -477,10 +540,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Redmi 9',
@@ -492,10 +556,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Redmi Note 9 Pro 128GB',
@@ -507,10 +572,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Redmi 9C 3GB - 64GB',
@@ -522,10 +588,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Mi 10T Pro',
@@ -537,10 +604,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Mi Note 10',
@@ -552,10 +620,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Mi Note 10 Lite',
@@ -567,10 +636,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Redmi Note 9s 4G 64GB',
@@ -582,10 +652,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi Redmi Note 9',
@@ -597,10 +668,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Xiaomi POCO X3 NFC 128GB',
@@ -612,10 +684,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 4,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 4,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo V20',
@@ -627,10 +700,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo Y50',
@@ -642,10 +716,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo V19',
@@ -657,10 +732,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo Y20',
@@ -672,10 +748,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo Y20',
@@ -687,10 +764,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo Y11',
@@ -702,10 +780,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo Y30',
@@ -717,10 +796,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo Y19 6GB',
@@ -732,10 +812,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vivo U10',
@@ -747,10 +828,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 5,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 5,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme 6i',
@@ -762,10 +844,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 6,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 6,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme C12',
@@ -777,10 +860,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 6,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 6,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme 6 8GB',
@@ -792,10 +876,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 6,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 6,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme 6',
@@ -807,10 +892,11 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
-                'category_id' => 6,'option' => json_encode($data),
+                'media_id' => [1,2,3,4], 
+                'category_id' => 6,'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme 5i',
@@ -822,11 +908,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 6,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme C3',
@@ -838,11 +925,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 6,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme C11',
@@ -854,11 +942,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 6,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme 7i',
@@ -870,11 +959,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 6,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme 6 Pro',
@@ -886,11 +976,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 6,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Realme C3i',
@@ -902,11 +993,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 6,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Active 3 6GB Ram',
@@ -918,11 +1010,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Bee 3',
@@ -934,11 +1027,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Joy 3 4GB',
@@ -950,11 +1044,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Aris 6G 64GB',
@@ -966,11 +1061,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Live 4',
@@ -982,11 +1078,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Joy 3 2GB',
@@ -998,11 +1095,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Joy 4',
@@ -1014,11 +1112,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Aris Pro 4G',
@@ -1030,11 +1129,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Active 3 4GB Ram',
@@ -1046,11 +1146,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart Joy 4 4GB',
@@ -1062,11 +1163,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 8,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 8.3 5G',
@@ -1078,11 +1180,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 5.3',
@@ -1094,11 +1197,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 2.4',
@@ -1110,11 +1214,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia C2',
@@ -1126,11 +1231,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 7.2',
@@ -1142,11 +1248,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Vsmart',
@@ -1158,11 +1265,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 800 Tough',
@@ -1174,11 +1282,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 2720 Flip',
@@ -1190,11 +1299,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 2.3',
@@ -1206,11 +1316,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             ),
             array(
                 'title' => 'Nokia 2.2',
@@ -1222,11 +1333,12 @@ class ProductSeeder extends Seeder
                 'weight' => 1,
                 'height' => 1,
                 'width' => 1,
-                'media_id' => 10,
+                'media_id' => [1,2,3,4], 
                 'category_id' => 9,
-                'option' => json_encode($data),
+                'option' => $data,
                 'content' => $content,
-                'description' => $description
+                'description' => $description,
+                'avatar_id' => 1
             )
         ]);
     }

@@ -3,6 +3,7 @@
 @if(isset($record))
 <div class="sp-area">
     <div class="container">
+    @include('frontend.messages.messages')
         <div class="sp-nav">
             <div class="row">
                 <div class="col-lg-4">
@@ -15,24 +16,14 @@
                         "swipe": false,
                         "asNavFor": ".sp-img_slider-nav"
                         }'>
-                            <div class="single-slide red zoom">
-                                <img src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
+                            <div class="single-slide red zoom" width="300px;" height="300px;">
+                                <img style="width: 100%; height:300px;" src="{{ url('storage') }}/images/{{ $avatar->title }}" alt="Kenne's Product Image">
                             </div>
-                            <div class="single-slide orange zoom">
-                                <img src="/assets/images/product/1-2.jpg" alt="Kenne's Product Image">
+                            @foreach($media as $img)
+                            <div class="single-slide green zoom" style="width: 100%; height:100%;">
+                                <img  src="{{ url('storage') }}/images/{{ $img }}" alt="Kenne's Product Image">
                             </div>
-                            <div class="single-slide brown zoom">
-                                <img src="/assets/images/product/2-1.jpg" alt="Kenne's Product Image">
-                            </div>
-                            <div class="single-slide umber zoom">
-                                <img src="/assets/images/product/2-2.jpg" alt="Kenne's Product Image">
-                            </div>
-                            <div class="single-slide black zoom">
-                                <img src="/assets/images/product/3-1.jpg" alt="Kenne's Product Image">
-                            </div>
-                            <div class="single-slide green zoom">
-                                <img src="/assets/images/product/3-2.jpg" alt="Kenne's Product Image">
-                            </div>
+                            @endforeach
                         </div>
                         <div class="sp-img_slider-nav slick-slider-nav kenne-element-carousel arrow-style-2 arrow-style-3" data-slick-options='{
                         "slidesToShow": 3,
@@ -47,24 +38,14 @@
                                 {"breakpoint":768, "settings": {"slidesToShow": 3}},
                                 {"breakpoint":575, "settings": {"slidesToShow": 2}}
                             ]'>
-                            <div class="single-slide red">
-                                <img src="/assets/images/product/1-1.jpg" alt="Kenne's Product Thumnail">
+                            <div class="single-slide red zoom">
+                                <img style="width: 50px; height:50px;" src="{{ url('storage') }}//images/{{ $avatar->title }}" alt="Kenne's Product Image">
                             </div>
-                            <div class="single-slide orange">
-                                <img src="/assets/images/product/1-2.jpg" alt="Kenne's Product Thumnail">
+                            @foreach($media as $img)
+                            <div class="single-slide green zoom">
+                                <img style="width: 50px; height:50px;" src="{{ url('storage') }}/images/{{ $img }}" alt="Kenne's Product Image">
                             </div>
-                            <div class="single-slide brown">
-                                <img src="/assets/images/product/2-1.jpg" alt="Kenne's Product Thumnail">
-                            </div>
-                            <div class="single-slide umber">
-                                <img src="/assets/images/product/2-2.jpg" alt="Kenne's Product Thumnail">
-                            </div>
-                            <div class="single-slide red">
-                                <img src="/assets/images/product/3-1.jpg" alt="Kenne's Product Thumnail">
-                            </div>
-                            <div class="single-slide orange">
-                                <img src="/assets/images/product/3-2.jpg" alt="Kenne's Product Thumnail">
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -73,7 +54,7 @@
                         <div class="sp-heading">
                             <h5><a href="#">{{ $record->title }}</a></h5>
                         </div>
-                        <span class="reference">Name: {{ $record->title }}</span>
+                        <span class="reference">Tên sản phẩm: {{ $record->title }}</span>
                         <div class="rating-box">
                             <ul>
                                 <li><i class="ion-android-star"></i></li>
@@ -85,43 +66,19 @@
                         </div>
                         <div class="sp-essential_stuff">
                             <ul>
-                                <li>Brands <a href="javascript:void(0)">Buxton</a></li>
-                                <li>Code: <a href="javascript:void(0)">{{ $record->sku }}</a></li>
-                                <li>Reward Points: <a href="javascript:void(0)">{{ $record->qty }}</a></li>
-                                <li>Availability: <a href="javascript:void(0)">{{ ($record->qty > 0)? "Còn hàng" : "Hết hàng" }}</a></li>
+                                <li>Mã: <a href="javascript:void(0)">{{ $record->sku }}</a></li>
+                                <li>Kho: <a href="javascript:void(0)">{{ $record->qty }}</a></li>
+                                <li>Tình trạng: <a href="javascript:void(0)">{{ ($record->qty > 0)? "Còn hàng" : "Hết hàng" }}</a></li>
                                 <li>Giá: <a href="javascript:void(0)"><span>{{ number_format(($record->price_sale > 0)? $record->price_sale : $record->price) }}</span></a></li>
                             </ul>
                         </div>
-                        <div class="product-size_box">
-                            <span>Size</span>
-                            <select class="myniceselect nice-select">
-                                <option value="1">S</option>
-                                <option value="2">M</option>
-                                <option value="3">L</option>
-                                <option value="4">XL</option>
-                            </select>
-                        </div>
-                        <div class="quantity">
-                            <label>Quantity</label>
-                            <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" value="1" type="text">
-                                <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                            </div>
-                        </div>
                         <div class="qty-btn_area">
                             <ul>
-                                <li><a class="qty-cart_btn" href="cart.html">Add To Cart</a></li>
+                                <li><a class="qty-cart_btn add-to-cart" data-id="{{ $record->id }}">Mua</a></li>
                                 <li><a class="qty-wishlist_btn" href="wishlist.html" data-toggle="tooltip" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                 </li>
                                 <li><a class="qty-compare_btn" href="compare.html" data-toggle="tooltip" title="Compare This Product"><i class="ion-ios-shuffle-strong"></i></a></li>
                             </ul>
-                        </div>
-                        <div class="kenne-tag-line">
-                            <h6>Tags:</h6>
-                            <a href="javascript:void(0)">scarf</a>,
-                            <a href="javascript:void(0)">jacket</a>,
-                            <a href="javascript:void(0)">shirt</a>
                         </div>
                         <div class="kenne-social_link">
                             <ul>
@@ -174,29 +131,27 @@
                             <div class="product-description">
                                 <ul>
                                     <li>
-                                        {{ $record->content }}
+                                        {!! $record->content !!}
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div id="specification" class="tab-pane" role="tabpanel">
-                            @if( isset($setting))
                             <table class="table table-bordered specification-inner_stuff">
                                 <tbody>
                                     <tr>
                                         <td colspan="2"><strong>Cấu hình</strong></td>
                                     </tr>
                                 </tbody>
-                                @foreach($setting as $key=>$value)
+                                @foreach($record->option as $value)
                                 <tbody>
                                     <tr>
-                                        <td>{{ $key }}</td>
-                                        <td>{{ $value }}</td>
+                                        <td>{{ $value['name'] }}</td>
+                                        <td>{{ $value['value'] }}</td>
                                     </tr>
                                 </tbody>
                                 @endforeach
                             </table>
-                            @endif
                         </div>
                         <div id="reviews" class="tab-pane" role="tabpanel">
                             <div class="tab-pane active" id="tab-review">
@@ -269,75 +224,6 @@
         </div>
     </div>
 </div>
-@if(count( \Helper::BestSale()))
-<div class="list-product_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h3>Sản phẩm bán chạy</span></h3>
-                    <div class="list-product_arrow"></div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="kenne-element-carousel list-product_slider slider-nav" data-slick-options='{
-                "slidesToShow": 3,
-                "slidesToScroll": 1,
-                "infinite": false,
-                "arrows": true,
-                "dots": false,
-                "spaceBetween": 30,
-                "appendArrows": ".list-product_arrow"
-                }' data-slick-responsive='[
-                {"breakpoint":1200, "settings": {
-                "slidesToShow": 2
-                }},
-                {"breakpoint":768, "settings": {
-                "slidesToShow": 1
-                }},
-                {"breakpoint":575, "settings": {
-                "slidesToShow": 1
-                }}
-            ]'>
-            @foreach( \Helper::BestSale() as $item)
-                    <div class="product-item">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="{{ route('detailItem',$item->slug) }}">
-                                    <img class="primary-img" src="/assets/images/product/8-1.jpg" alt="Kenne's Product Image">
-                                </a>
-                                @if( $item->price_sale > 0 && $item->price_sale < $item->price)
-                                <span class="sticker-2">- {{ round( ($item->price - $item->price_sale) / $item->price * 100 )}}%</span>
-                                @endif
-                            </div>
-                            <div class="product-content">
-                                <div class="product-desc_info">
-                                    <h3 class="product-name"><a href="{{ route('detailItem',$item->slug) }}">{{ $item->title }}</a>
-                                    </h3>
-                                    <div class="price-box">
-                                    @if( $item->price_sale > 0 && $item->price_sale < $item->price )
-                                        <span class="new-price">{{ number_format($item->price_sale) }}₫</span>
-                                    @endif
-                                        <span class="old-price">{{ number_format($item->price) }}₫</span>
-                                    </div>
-                                </div>
-                                <div class="add-actions">
-                                    <ul>
-                                        <li><a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                        </li>
-                                        <li><a href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To cart">Add to cart</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
+@include('frontend.sale.bestsale')
 @endif
 @endsection

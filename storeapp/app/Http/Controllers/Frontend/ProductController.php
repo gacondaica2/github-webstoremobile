@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\frontend;
-
+use Artesaos\SEOTools\Facades\SEOMeta;
 use App\Http\Controllers\Controller;
+use App\Model\Media;
 use Illuminate\Http\Request;
 use App\Model\Product;
 
@@ -16,28 +17,45 @@ class ProductController extends Controller
     public function index($slug, Request $request)
     {
         try {
-            $record = Product::where('slug', $slug)->first();
-            $test = json_decode( $record->option);
-            if( empty($test)) throw new \Exception('Không có thông tin cấu hình!');
-            $setting = [
-                'Hãng sản xuất'         => $test->Manufacturer,
-                'Kích thước'            => $test->Size,
-                'Trọng lượng'           => $test->Weight,
-                'Bộ nhớ đệm / Ram'      => $test->Ram,
-                'Bộ nhớ trong'          => $test->Internalmemory,
-                'Loại SIM'              => $test->SIM,
-                'Loại màn hình'         => $test->screen,
-                'Kích thước màn hình'   => $test->Screensize,
-                'Độ phân giải màn hình' => $test->Screenresolution,
-                'Hệ điều hành'          => $test->Operatingsystem,
-            ];
+            $record = Product::where('slug', $slug)->where('status', 1)->first();
+           
+            $avatar = Media::where('id', $record->media_id)->first();
+            $media = [];
+            foreach($record->media_id as $value) {
+                $item = Media::where('id', $value)->first();
+                $media[] = $item->title;
+            }
             if( empty($record)) throw new \Exception('Sản phẩm không tồn tại!');
+            SEOMeta::setTitle($record->title);
+            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setCanonical('https://storemobile.xyz');
             return view('frontend.product.product')->with([
-                'record' => $record,
-                'setting' => $setting
+                'record'    => $record,
+                'avatar'    => $avatar,
+                'media'    => $media
             ]);
         }catch(\Exception $e){
-            dd($e->getMessage());
+            return redirect()->back()->with([      
+                "messages"  => $e->getMessage(), 
+                'color'     => 'alert-danger'
+            ]);
+        }
+    }
+
+    public function findItem( Request $request) {
+        try {
+            $records = Product::where('title','like',"%". $request->search."%")->paginate(8);
+            SEOMeta::setTitle('Tìm kiếm '. $request->search);
+            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setCanonical('https://storemobile.xyz');
+            return view('frontend.category.category')->with([
+                'records' => $records
+            ]);
+        }catch(\Exception $e) {
+            return view('frontend.category.category')->with([      
+                "messages" => $e->getMessage(), 
+                'color' => 'alert-danger'
+            ]);
         }
     }
 
@@ -105,5 +123,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search() {
+        dd('ok');
     }
 }

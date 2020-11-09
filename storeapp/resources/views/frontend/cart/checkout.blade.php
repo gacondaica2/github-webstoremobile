@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 <div class="country-select clearfix">
                                     <label>Tỉnh/Thành phố <span class="required">*</span></label>
-                                    <select class="province" name="province">
+                                    <select class="province custom-select" name="province">
                                         <option data-display="Tỉnh / thành phố">Tỉnh / thành phố</option>
                                         @foreach($records as $province)
                                         <option value="{{ $province->id }}" data-id="{{ $province->id }}">{{ $province->name }}</option>
@@ -48,7 +48,7 @@
                             <div class="col-md-12">
                                 <div class="country-select clearfix">
                                     <label>Quận/Huyện <span class="required">*</span></label>
-                                    <select class="district" name="district">
+                                    <select class="district custom-select" name="district">
                                         <option data-display="Quận / huyện">Quận / huyện</option>
                                     </select>
                                 </div>
@@ -56,7 +56,7 @@
                             <div class="col-md-12">
                                 <div class="country-select clearfix">
                                     <label>Xã/Phường <span class="required">*</span></label>
-                                    <select class="ward" name="ward">
+                                    <select class="ward custom-select" name="ward">
                                         <option data-display="Xã/Phường">Xã / Phường</option>
                                     </select>
                                 </div>

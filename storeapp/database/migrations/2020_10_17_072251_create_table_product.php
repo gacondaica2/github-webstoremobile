@@ -29,6 +29,7 @@ class CreateTableProduct extends Migration
             $table->integer('category_id')->comment('category id');
             $table->text('option')->nullable()->comment('thong so san pham');
             $table->string('description', 255)->comment('mo ta so bo');
+            $table->string('status', 2)->comment('trang thai');
             $table->timestamps();
         });
     }

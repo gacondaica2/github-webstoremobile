@@ -3,7 +3,7 @@
 <div class="kenne-cart-area">
     <div class="container">
         <div class="row">
-            
+            @include('frontend.messages.messages')
             @if( count( Cart::getContent()) > 0)
             <div class="col-12">
                 <form action="{{ route('update_cart') }}" method="POST">
@@ -25,19 +25,15 @@
                                 <tr>
                                     <td class="kenne-product-remove"><a href="{{ route('delete_item_cart', $item->id) }}"><i class="fa fa-trash"
                                         title="Remove"></i></a></td>
-                                    <td class="kenne-product-thumbnail"><a href="javascript:void(0)"><img src="/assets/images/product/small-size/1.jpg" alt="Uren's Cart Thumbnail"></a></td>
+                                    <td class="kenne-product-thumbnail"><a href="javascript:void(0)"><img src="{{ $item->attributes->img }}" alt="{{ $item->attributes->title }}"></a></td>
                                     <td class="kenne-product-name" ><a href="javascript:void(0)">{{ $item->name }}</a></td>
                                     <td class="kenne-product-price"><span class="amount">{{ number_format($item->price) }}₫</span></td>
                                     <td class="quantity">
                                         <label>số lượng</label>
                                         <div class="row">
-                                            <p class="col-4">
-                                            <span type="button" class="cart-plus-item btn text-dark border" data-id="{{ $item->id }}" style="width: 30px; height: 30px;">+</span>
-                                            </p>
-                                            <input class="col-4" type="number" value="{{ $item->quantity }}">
-                                            <p class="col-4">
-                                            <span type="button" class="cart-mines-item btn text-dark border" data-id="{{ $item->id }}" style="width: 30px; height: 30px;"> - </span>
-                                            </p>
+                                            <div class="col-4"></div>
+                                            <div>{{ $item->quantity }}</div>
+                                            <div class="col-4"></div>
                                         </div>
                                     </td>
                                     <td class="product-subtotal"><span class="amount">{{ number_format($item->price * $item->quantity) }}₫</span></td>
@@ -50,8 +46,8 @@
                         <div class="col-12">
                             <div class="coupon-all">
                                 <div class="coupon">
-                                    <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                    <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                    <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Mã giảm giá" type="text">
+                                    <input class="button" name="apply_coupon" value="Áp dụng" type="submit">
                                 </div>
                             </div>
                         </div>
@@ -61,9 +57,9 @@
                             <div class="cart-page-total">
                                 <h2>Tổng tiền</h2>
                                 <ul>
-                                    <li>Total <span>{{ number_format(Cart::getTotal()) }}₫</span></li>
+                                    <li>Tổng tiền <span>{{ number_format(Cart::getTotal()) }}₫</span></li>
                                 </ul>
-                                <a href="javascript:void(0)">Proceed to checkout</a>
+                                <a href="javascript:void(0)">Thanh toán đơn hàng</a>
                             </div>
                         </div>
                     </div>

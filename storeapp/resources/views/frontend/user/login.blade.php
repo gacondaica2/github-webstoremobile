@@ -26,11 +26,6 @@
                                     <label for="remember_me">Nhớ</label>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="forgotton-password_info">
-                                    <a href="#"> Quên mật khẩu?</a>
-                                </div>
-                            </div>
                             <div class="col-md-12">
                                 <button type="submit" class="kenne-login_btn">Đăng nhập</button>
                             </div>
@@ -66,6 +61,24 @@
                             </div>
                             <div class="col-12">
                                 <button class="kenne-register_btn" type="submit">Đăng ký</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                <!-- Login Form s-->
+                <form action="{{ route('forgot_password') }}" method="POST">
+                    @csrf
+                    <div class="login-form">
+                        <h4 class="login-title">Quên mật khẩu</h4>
+                        <div class="row">
+                            <div class="col-md-12 col-12">
+                                <label>Địa Chỉ Email*</label>
+                                <input type="email" name="email" placeholder="Email Address">
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="kenne-login_btn">Lấy lại mật khẩu</button>
                             </div>
                         </div>
                     </div>

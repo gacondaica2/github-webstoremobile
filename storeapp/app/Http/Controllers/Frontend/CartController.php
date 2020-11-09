@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\frontend;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Model\District;
 use Illuminate\Http\Request;
 use App\Model\Product;
@@ -11,7 +15,6 @@ use App\Model\Ward;
 use App\Model\Order;
 use App\Model\Order_detail;
 use App\Model\Order_delivery;
-use Illuminate\Support\Facades\Auth;
 use Cart;
 
 class CartController extends Controller
@@ -24,7 +27,10 @@ class CartController extends Controller
     public function index()
     {
        try {           
-           $records = Province::all();
+            $records = Province::all();
+            SEOMeta::setTitle('Giỏ hàng');
+            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setCanonical('https://storemobile.xyz');
            return view('frontend.cart.checkout')->with([
                'records' => $records
            ]);
@@ -41,10 +47,12 @@ class CartController extends Controller
     public function create(Request $request)
     {
         try {
+            DB::beginTransaction();
             if( count( Cart::getContent()) === 0 ) throw new \Exception('Giỏ hàng không có sản phẩm');
             $validator = Validator::make($request->all(), [
-                'email'         => 'required|email|max:255|unique:users',
+                'email'         => 'required|email|max:255',
                 'name'          => 'required',
+                'phone'         => 'required',
                 'address'       => 'required',
                 'province'      => 'required',
                 'district'      => 'required',
@@ -62,6 +70,11 @@ class CartController extends Controller
             $order->save();
             if( empty($order)) throw new \Exception('Đơn hàng chưa được lưu!');
             foreach( Cart::getContent() as $item) {
+                $product = Product::find($item->id);
+                if( empty($product)) throw new \Exception('Sản phẩm không tồn tại!');
+                if( $product->qty < $item->quantity ) throw new \Exception('Sản phẩm hiện không đủ hàng!');
+                $product->qty -= $item->quantity;
+                $product->save();
                 $order_detail               = new Order_detail();
                 $order_detail->name         = $item->name;
                 $order_detail->price        = $item->price;   
@@ -80,11 +93,20 @@ class CartController extends Controller
             $order_delivery->phone          = $request->phone;
             $order_delivery->email          = (Auth::check()) ? Auth::user()->email  : $request->email;
             $order_delivery->save();
-            Cart::clear();            ;
-            return redirect()->back()->with([
-                "messages" => 'Đặt hàng thành công!',
-                'color' => 'alert-success'
-            ]);
+            Cart::clear();     
+            $my_order = Order::where('id', $order->id)->with([
+                'order_delivery', 'order_detail'
+            ])->first();
+            Mail::send('frontend.mail.order', [
+                'record'      =>  $my_order
+            ],  function($message) use ( $order_delivery ){
+                $message->to( $order_delivery->email, 'Đơn hàng của bạn')->subject('Đơn hàng của bạn!');
+            });
+            DB::commit();     
+            return redirect()->route('detail_order', $my_order->id )->with([
+                "messages"  => 'Cảm ơn bạn đã mua hàng tại StoreMobile.xyz!',
+                'color'     => 'alert-success'
+            ]);;
         }catch(\Exception $e) {
             return redirect()->back()->with([
                 "messages" => $e->getMessage(),
@@ -200,7 +222,7 @@ class CartController extends Controller
         }
     }
 
-    public function detail() {
+    public function detail() {  
         return view('frontend.cart.detail');
     }
 

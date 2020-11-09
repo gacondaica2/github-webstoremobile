@@ -1,80 +1,12 @@
 @extends('frontend.template')
 @section('content')
-
-@if(count( \Helper::BestSale()))
-<div class="list-product_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h3>Sản phẩm bán chạy</span></h3>
-                    <div class="list-product_arrow"></div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="kenne-element-carousel list-product_slider slider-nav" data-slick-options='{
-                "slidesToShow": 3,
-                "slidesToScroll": 1,
-                "infinite": false,
-                "arrows": true,
-                "dots": false,
-                "spaceBetween": 30,
-                "appendArrows": ".list-product_arrow"
-                }' data-slick-responsive='[
-                {"breakpoint":1200, "settings": {
-                "slidesToShow": 2
-                }},
-                {"breakpoint":768, "settings": {
-                "slidesToShow": 1
-                }},
-                {"breakpoint":575, "settings": {
-                "slidesToShow": 1
-                }}
-            ]'>
-            @foreach( \Helper::BestSale() as $item)
-                    <div class="product-item">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="{{ route('detailItem',$item->slug) }}">
-                                    <img class="primary-img" src="/assets/images/product/8-1.jpg" alt="Kenne's Product Image">
-                                </a>
-                                @if( $item->price_sale > 0 && $item->price_sale < $item->price)
-                                <span class="sticker-2">- {{ round( ($item->price - $item->price_sale) / $item->price * 100 )}}%</span>
-                                @endif
-                            </div>
-                            <div class="product-content">
-                                <div class="product-desc_info">
-                                    <h3 class="product-name"><a href="{{ route('detailItem',$item->slug) }}">{{ $item->title }}</a>
-                                    </h3>
-                                    <div class="price-box">
-                                    @if( $item->price_sale > 0 && $item->price_sale < $item->price )
-                                        <span class="new-price">{{ number_format($item->price_sale) }}₫</span>
-                                    @endif
-                                        <span class="old-price">{{ number_format($item->price) }}₫</span>
-                                    </div>
-                                </div>
-                                <div class="add-actions">
-                                    <ul>
-                                        <li><a href="{{ route('addTocart',$item->slug) }}" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-ios-heart-outline"></i></a>
-                                        </li>
-                                        <li class="btn add-to-cart" data-id="{{ $item->id }}">Add to cart</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
+@include('frontend.sale.bestsale')
 @if(isset($Categories) && count($Categories) > 0 )
     @foreach($Categories as $item)
     @if( count($item->product) > 0)
         <div class="product-area ">
             <div class="container">
+            @include('frontend.messages.messages')
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title">
@@ -105,8 +37,8 @@
                             <div class="product-item">
                                 <div class="single-product">
                                     <div class="product-img">
-                                        <a href="single-product.html">
-                                            <img class="primary-img" src="/assets/images/product/1-1.jpg" alt="Kenne's Product Image">
+                                        <a href="{{ route('detailItem', $value->slug) }}">
+                                            <img class="primary-img" src="{{ $value->img }}" alt="{{ $value->title }}">
                                         </a>
                                     </div>
                                     <div class="product-content">

@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $table = 'order';
 
-    public function Order_delivery() {
+    public function order_delivery() {
         return $this->hasOne('App\Model\Order_delivery','order_id','id');
     }
 

@@ -16,10 +16,9 @@ class CreateTableMedia extends Migration
         Schema::create('Media', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('media id ');
-            $table->string('name')->comment('ten');
-            $table->string('size')->comment('kich co ');
-            $table->string('dimension')->comment('chieu dai rong  ');
-            $table->string('type')->comment('loai hinh');
+            $table->string('size')->nullable()->comment('kich co ');
+            $table->string('dimension')->nullable()->comment('chieu dai rong  ');
+            $table->string('type')->nullable()->comment('loai hinh');
             $table->timestamps();
         });
     }
