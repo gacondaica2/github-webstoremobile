@@ -142,7 +142,7 @@
                                 <nav class="main-nav d-flex justify-content-center">
                                     <ul>
                                         <li class="dropdown-holder"><a href="{{ route('home') }}">Home</a>
-                                        </li>                     
+                                        </li>                   
                                         @if( count(\Helper::category()) > 0)
                                         <li class="megamenu-holder position-static">Danh Mục <i
                                                 class="ion-chevron-down"></i>
@@ -323,6 +323,14 @@
                         </div>
                         <nav class="offcanvas-navigation">
                             <ul class="mobile-menu">
+                                
+                                <div class="header-search_area menu-item-has-children active">
+                                    <form class="search-form" action="{{ route('search') }}" method="POST">
+                                        @csrf
+                                        <input type="text" class="search-item" name="search" placeholder="Tìm kiếm...">
+                                        <button class="search-button" type="submit"><i class="ion-ios-search"></i></button>
+                                    </form>
+                                </div>
                                 <li class="menu-item-has-children active"><a href="{{ route('home') }}"><span class="mm-text">Danh Mục</span></a>
                                 </li>
                                 <li class="menu-item-has-children">
