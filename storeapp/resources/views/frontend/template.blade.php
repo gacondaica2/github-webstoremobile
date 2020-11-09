@@ -76,9 +76,10 @@
                                     </div>
                                 </div>
                                 <div class="header-search_area d-none d-lg-block">
-                                    <form class="search-form" action="#">
-                                        <input type="text" class="search-item" placeholder="Search">
-                                        <button class="search-button"><i class="ion-ios-search"></i></button>
+                                    <form class="search-form" action="{{ route('search') }}" method="POST">
+                                        @csrf
+                                        <input type="text" class="search-item" name="search" placeholder="Tìm kiếm...">
+                                        <button class="search-button" type="submit"><i class="ion-ios-search"></i></button>
                                     </form>
                                 </div>
                                 <div class="header-right_area d-none d-lg-inline-block">
@@ -489,7 +490,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="payment">
-                                <img src="{{ url('frontend') }}/assets/images/footer/payment/1.png" alt="Kenne's Payment Method">
+                                <img width="70" height="30" src="{{ \Helper::logo_header() }}" alt="{{ \Helper::logo_header() }}">
                             </div>
                         </div>
                     </div>

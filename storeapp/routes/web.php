@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
+
 Route::get('/home/danh-muc/{slug}', 'Frontend\CategoryController@index')->name('category');
 Route::get('/danh-muc/api/{slug}', 'Frontend\CategoryController@create')->name('category2');
 Route::get('/danh-muc/item/{slug}', 'Frontend\ProductController@index')->name('detailItem');
