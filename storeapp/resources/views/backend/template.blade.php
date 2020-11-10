@@ -72,10 +72,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="">Thêm bài viết mới</a>
+                                    <a href="{{ route('create_page') }}">Thêm bài viết mới</a>
                                 </li>
                                 <li>
-                                    <a href="">Tất cả bài viết</a>
+                                    <a href="{{ route('page') }}">Tất cả bài viết</a>
                                 </li>
                             </ul>
                         </li>

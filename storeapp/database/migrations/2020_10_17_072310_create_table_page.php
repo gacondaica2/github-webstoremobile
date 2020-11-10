@@ -17,7 +17,9 @@ class CreateTablePage extends Migration
             $table->id();
             $table->integer('user_id')->comment('user nguoi dang nhap');
             $table->string('title', 50)->comment('duong dan');
+            $table->string('avatar_id', 50)->comment('Hinh anh');
             $table->string('content')->comment('noi dung');
+            $table->text('description')->comment('noi dung');
             $table->timestamps();
         });
     }

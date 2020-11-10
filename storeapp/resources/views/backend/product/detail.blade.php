@@ -33,12 +33,22 @@
                                     <label class="font-weight-semibold">Giá khuyến mãi(nếu có):</label>
                                     <input type="number" name="price_sale" value="{{ $item->price_sale }}" class="form-control" id="title" placeholder="Giá khuyễn mãi">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="">Danh mục</label>
+                                <div class="form-group col-md-3">
+                                    <label class="font-weight-semibold" for="">Danh mục Chính</label>
                                     @if( isset($parent) )
-                                    <select name="category" id="childrent" class="form-control">
-                                        @foreach($parent as $chidlrent)
-                                        <option value="{{ $chidlrent->id }}" {{ ($chidlrent->id == $item->category_id) ? 'selected': "" }}>{{ $chidlrent->title }}</option>
+                                    <select name="category" id="childrent" class="form-control parent-category">
+                                        @foreach($parent as $parent_item)
+                                        <option value="{{ $parent_item->id }}" {{ ($parent_item->id == $item->category_id) ? 'selected': "" }}>{{ $parent_item->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="font-weight-semibold" for="">Danh mục Phụ</label>
+                                    @if( isset($item->category->childrent) )
+                                    <select name="childrent" id="childrent" class="form-control childrent-category">
+                                        @foreach($item->category->childrent as $childrent)
+                                        <option value="{{ $childrent->id }}">{{ $childrent->title }}</option>
                                         @endforeach
                                     </select>
                                     @endif
@@ -191,8 +201,8 @@
                                     <label class="font-weight-semibold">Ảnh mô tả:</label>
                                     <input class="media" type="file" name="media[]" multiple="multiple">
                                 </div>
-                                <div class="form-group col-md-3" style="width: 300px; height:300px;">
-                                    <img src="/storage/images/{{ $item->media->title }}" alt="image">
+                                <div class="form-group col-md-3">
+                                    <img  style="width: 300px; height:300px;" src="/storage/images/{{ $item->media->title }}" alt="image">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Chỉnh sửa</button>

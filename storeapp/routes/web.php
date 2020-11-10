@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
-
 Route::get('/home/danh-muc/{slug}', 'Frontend\CategoryController@index')->name('category');
 Route::get('/danh-muc/api/{slug}', 'Frontend\CategoryController@create')->name('category2');
 Route::get('/danh-muc/item/{slug}', 'Frontend\ProductController@index')->name('detailItem');
@@ -32,8 +31,13 @@ Route::get('/home/danh-muc/cart/checkout', 'Frontend\CartController@index')->nam
 Route::post('/home/danh-muc/cart/checkout', 'Frontend\CartController@create')->name('checkout');
 Route::get('/home/cart/checkout/district/{id}', 'Frontend\CartController@district')->name('district');
 Route::get('/home/cart/checkout/ward/{id}', 'Frontend\CartController@ward')->name('ward');
-
-
+//frotnend contact
+Route::get('/contact', 'Frontend\HomeController@contact')->name('contact');
+Route::get('/about', 'Frontend\HomeController@about')->name('about');
+//tin tuc
+Route::get('/blogs', 'Frontend\BlogController@index')->name('blogs');
+Route::get('/blogs/detail/{id}', 'Frontend\BlogController@detail')->name('detail_blog');
+Route::post('/blogs/find', 'Frontend\BlogController@find')->name('search_blog');
 
 //backend
 Route::get('administrator','backend\AdminCotroller@login')->name('checkAdmin');
@@ -77,5 +81,11 @@ Route::prefix('manage')->middleware('checkout')->group(function () {
     Route::get('slide/edit/{id}','Backend\SlideController@edit')->name('edit_slide');
     Route::post('slide/update/{id}','Backend\SlideController@update')->name('update_slide');
     Route::get('slide/delete/{id}','Backend\SlideController@destroy')->name('delete_slide');
+    Route::get('tin-tuc/','Backend\PageController@index')->name('page');
+    Route::get('tin-tuc/create','Backend\PageController@create')->name('create_page');
+    Route::post('tin-tuc/create','Backend\PageController@add')->name('create_page_post');
+    Route::get('tin-tuc/edit/{id}','Backend\PageController@edit')->name('edit_page');
+    Route::post('tin-tuc/update/{id}','Backend\PageController@update')->name('update_page');
+    Route::get('tin-tuc/delete/{id}','Backend\PageController@destroy')->name('delete_page');
 });
 

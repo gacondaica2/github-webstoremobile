@@ -66,4 +66,26 @@ $( document ).ready(function() {
             }
         })
     }
+
+
+    //click api category childrent
+    $(document).on('change', '.parent-category', function(){
+        var id = $(this).val();
+        chidlrent_category(id)
+    })
+
+    function chidlrent_category(id) {
+        var chilrent = '';
+        $.ajax({
+            url: '/manage/danh-muc/api/'+ id,
+            success: function(response) {
+                if( response.messages == "success") {
+                    $.each(response.data.childrent, function(key, value){
+                        chilrent += '<option value="'+value.id +'">'+value.title +'</option>';
+                    })
+                    $('.childrent-category').html(chilrent);
+                }
+            }
+        })
+    }
 });

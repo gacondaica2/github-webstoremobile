@@ -78,7 +78,7 @@ class ProductController extends Controller
             $product->weight        = $request->weight;
             $product->width         = $request->width;
             $product->height        = $request->height;
-            $product->category_id   = $request->category;
+            $product->category_id   = $request->childrent;
             $product->avatar_id     = $avatar->id;
             $product->media_id      = !is_null($request->media) ? $media_id :[];
             $product->description   = "null";
@@ -126,8 +126,16 @@ class ProductController extends Controller
     public function edit($id)
     {
         try {
-            $item = Product::where('id', $id)->with(['media'])->first();
-            $parent             = Categories::all();
+            $item = Product::where('id', $id)->with([
+                'media' => function($query) {},
+                'category'  => function($query) {
+                    $query->with([
+                        'parent' => function($query) {},
+                        'childrent' => function($query) {}
+                    ]);
+                }
+            ])->first();
+            $parent             = Categories::where('parent_id', 0)->get();
             $manufacturer       = Manufacturer::all();
             $size               = Size::all();
             $weight             = Weight::all();
@@ -141,8 +149,8 @@ class ProductController extends Controller
             $pin                = Pin::all();
             if( empty($item)) throw new \Exception('Sản phẩm không tồn tại!');
             return view('backend.product.detail')->with([
-                'parent'             => $parent,
                 'item'               => $item,
+                'parent'             => $parent,
                 'manufacturers'      => $manufacturer,
                 'sizes'              => $size,
                 'rams'               => $ram,
@@ -272,9 +280,15 @@ class ProductController extends Controller
             $screenresolution   = Screenresolution::all();
             $operatingsystem    = Operatingsystem::all();
             $pin = Pin::all();
-            $parent = Categories::where('parent_id',0)->get();
+            $parent = Categories::where('parent_id',0)
+            ->with(['childrent'])
+            ->get();
+            $record = Categories::where('parent_id', 0)
+            ->with(['childrent'])
+            ->first();
             return view('backend.product.create')->with([
-                'parent'            => $parent,
+                'parent'             => $parent,
+                'record'             => $record,
                 'manufacturers'      => $manufacturer,
                 'sizes'              => $size,
                 'rams'               => $ram,

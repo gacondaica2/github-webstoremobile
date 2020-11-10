@@ -29,16 +29,26 @@
                                     <label class="font-weight-semibold">Giá:</label>
                                     <input type="number" name="price" class="form-control" id="title" placeholder="Giá sản phẩm">
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label class="font-weight-semibold">Giá khuyến mãi(nếu có):</label>
                                     <input type="number" name="price_sale" class="form-control" id="title" placeholder="Giá khuyễn mãi">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="font-weight-semibold" for="">Danh mục</label>
+                                <div class="form-group col-md-3">
+                                    <label class="font-weight-semibold" for="">Danh mục Chính</label>
                                     @if( isset($parent) )
-                                    <select name="category" id="childrent" class="form-control">
-                                        @foreach($parent as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    <select name="category" id="childrent" class="form-control parent-category">
+                                        @foreach($parent as $parent)
+                                        <option value="{{ $parent->id }}">{{ $parent->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="font-weight-semibold" for="">Danh mục Phụ</label>
+                                    @if( isset($record->childrent) )
+                                    <select name="childrent" id="childrent" class="form-control childrent-category">
+                                        @foreach($record->childrent as $childrent)
+                                        <option value="{{ $childrent->id }}">{{ $childrent->title }}</option>
                                         @endforeach
                                     </select>
                                     @endif

@@ -175,13 +175,10 @@
                                             </ul>
                                         </li>                                                                        
                                         @endif
-                                        <li><a href="javascript:void(0)">Tin Tức <i class="ion-chevron-down"></i></a>
-                                            <ul class="kenne-dropdown">
-                                                <li><a href="blog-grid_view.html">Grid View</a></li>
-                                            </ul>
+                                        <li><a href="{{ route('blogs') }}">Tin Tức</a>
                                         </li>
-                                        <li><a href="contact-us.html">Liên hệ</a></li>
-                                        <li><a href="about-us.html">Thông tin công ty</a></li>
+                                        <li><a href="{{  route('contact') }}">Liên hệ</a></li>
+                                        <li><a href="{{  route('about') }}">Thông tin công ty</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -241,14 +238,10 @@
                                                             </ul>
                                                         </li>                                                                        
                                                     @endif
-                                                    <li><a href="javascript:void(0)">Tin Tức <i
-                                                            class="ion-chevron-down"></i></a>
-                                                        <ul class="kenne-dropdown">
-                                                            <li><a href="blog-grid_view.html">Danh muc tin tức</a></li>
-                                                        </ul>
+                                                    <li><a href="{{ route('blogs') }}">Tin Tức</a>
                                                     </li>
-                                                    <li><a href="contact-us.html">Liên hệ</a></li>
-                                                    <li><a href="about-us.html">Thông tin công ty</a></li>
+                                                    <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                                                    <li><a href="{{  route('about') }}">Thông tin công ty</a></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -465,7 +458,7 @@
                                     <div class="footer-widgets">
                                         <ul>
                                             <li><a href="javascript:void(0)">Giới Thiệu</a></li>
-                                            <li><a href="javascript:void(0)">Tin Tức</a></li>
+                                            <li><a href="{{ route('blogs') }}">Tin Tức</a></li>
                                             <li><a href="javascript:void(0)">Hỗ Trợ</a></li>
                                             <li><a href="javascript:void(0)">Tin tức</a></li>
                                         </ul>

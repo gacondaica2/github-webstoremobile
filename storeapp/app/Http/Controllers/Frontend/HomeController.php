@@ -109,4 +109,19 @@ class HomeController extends Controller
         });
         dd('Gửi mail thành công');
     }
+
+    public function contact() {
+        try {
+            return view('frontend.page.contact');
+        }catch(\Exception $e) {
+            abort(404);
+        }
+    }
+    public function about() {
+        try {
+            return view('frontend.page.about');
+        }catch(\Exception $e) {
+            abort(404);
+        }
+    }
 }

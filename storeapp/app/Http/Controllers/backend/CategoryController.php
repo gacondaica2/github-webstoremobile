@@ -176,12 +176,11 @@ class CategoryController extends Controller
 
     public function apiCategory($id) {
         try {
-            $category = Categories::find($id);
-            if( is_null($category)) throw new \Exception('Danh mục không tồn tại');
             $records = Categories::where('id', $id )->with([
                 'childrent' => function($query) {}
             ])
             ->first();
+            if( is_null($records)) throw new \Exception('Danh mục không tồn tại');
             return response()->json([
                 'messages' => 'success',
                 'data'  => $records

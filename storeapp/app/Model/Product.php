@@ -16,6 +16,10 @@ class Product extends Model
         return $this->hasOne('App\Model\Media', 'id', 'avatar_id');
     }
 
+    public function category(){
+        return $this->hasOne('App\Model\Categories', 'id', 'category_id');
+    }
+
     public function getImgAttribute(){
         try {
             return '/storage/images/'. Media::where('id', $this->attributes['avatar_id'])->first()->title;
