@@ -45,7 +45,7 @@
                                 <a href="{{ route('edit_category', $record->id) }}">Sửa</a>
                             </div>
                             <div class="form-group col-md-2">
-                                <a href="{{ route('delete_category', $record->id) }}">Xoá</a>
+                                <a href="{{ route('delete_category', $record->id) }}"  onclick="return confirm('Bạn có chắc muốn xoá?')">Xoá</a>
                             </div>
                         @foreach($record->childrent as $childrent)
                             <div class="form-group col-md-8">
@@ -55,7 +55,7 @@
                                 <a href="{{ route('edit_category', $childrent->id) }}">Sửa</a>
                             </div>
                             <div class="form-group col-md-2">
-                                <a href="{{ route('delete_category', $childrent->id) }}">Xoá</a>
+                                <a href="{{ route('delete_category', $childrent->id) }}" onclick="return confirm('Bạn có chắc muốn xoá?')">Xoá</a>
                             </div>
                         @endforeach
                     </div>

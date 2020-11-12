@@ -26,7 +26,7 @@
                         @foreach($records as $img)
                             <tr>
                                 <td>
-                                    <img width="50px" height="50px" src="{{ url('storage')}}/images/{{ $img->title }}" alt="">
+                                    <img width="200px" height="100px" src="{{ url('storage')}}/images/{{ $img->title }}" alt="">
                                 </td>
                                 <td>{{ $img->title }}</td>
                                 <td><a class="btn btn-outline-primary" href="{{ route('edit_slide', $img->id) }}">edit</a></td>

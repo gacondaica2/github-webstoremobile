@@ -96,7 +96,7 @@ class UserController extends Controller
             if( !Auth::check() ) throw new \Exception('Bạn chưa đăng nhập');
             $records = Order::where('user_id', Auth::user()->id)->get();
             SEOMeta::setTitle(Auth::user()->name);
-            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setDescription(Auth::user()->name);
             SEOMeta::setCanonical('https://storemobile.xyz');
             return view('frontend.user.account')->with([
                 'records' => $records
@@ -168,7 +168,6 @@ class UserController extends Controller
                 ]);  
                 if( $validator->fails()) throw new \Exception($validator->errors()->first());
             }
-            
             if( ! Auth::check()) throw new \Exception('chưa đăng nhập');
             $user = User::find(Auth::user()->id);
             if( empty($user)) throw new \Exception('User không tồn tại!');
@@ -193,7 +192,7 @@ class UserController extends Controller
             ])->first();
             if( empty($order)) throw new \Exception('Đơn hàng không tồn tại!');
             SEOMeta::setTitle('danh sách đơn hàng');
-            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setDescription('Đơn hàng');
             SEOMeta::setCanonical('https://storemobile.xyz');
             return view('frontend.order.detail')->with([
                 'record' => $order

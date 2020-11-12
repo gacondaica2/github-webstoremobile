@@ -174,8 +174,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('view_create_slide') }}">Thêm Slide</a>
-                                    <a href="{{ route('slide') }}">Tất cả Slide</a>
+                                    <a href="{{ route('view_create_slide') }}">Thêm Banner</a>
+                                    <a href="{{ route('slide') }}">Banner</a>
                                     <a href="{{ route('logo_header') }}">Logo Header</a>
                                     <a href="{{ route('logo_footer') }}">Logo footer</a>
                                 </li>

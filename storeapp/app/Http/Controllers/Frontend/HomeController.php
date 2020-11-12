@@ -22,7 +22,9 @@ class HomeController extends Controller
         try {
             $category = Categories::with([
                 'product'  => function($query) {}
-            ])->where('status', 1)->get();
+            ])->where('status', 1)
+            ->where('parent_id', 0)
+            ->get();
             if( count($category) <= 0 ) throw new \Exception('Chưa có danh mục');
             SEOMeta::setTitle('home');
             SEOMeta::setDescription('Trang chủ');

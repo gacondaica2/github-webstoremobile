@@ -17,21 +17,21 @@ class ProductController extends Controller
     public function index($slug, Request $request)
     {
         try {
-            $record = Product::where('slug', $slug)->where('status', 1)->first();
-           
-            $avatar = Media::where('id', $record->media_id)->first();
-            $media = [];
-            foreach($record->media_id as $value) {
-                $item = Media::where('id', $value)->first();
-                $media[] = $item->title;
-            }
+            $record = Product::where('slug', $slug)->where('status', 1)
+            ->with([
+                'media' => function($query) {
+                }
+            ])
+            ->first();
             if( empty($record)) throw new \Exception('Sản phẩm không tồn tại!');
+            foreach($record->media_id as $value) {
+                $media[] = Media::where('id', $value)->first()->img;
+            }
             SEOMeta::setTitle($record->title);
             SEOMeta::setDescription('Trang chủ');
             SEOMeta::setCanonical('https://storemobile.xyz');
             return view('frontend.product.product')->with([
                 'record'    => $record,
-                'avatar'    => $avatar,
                 'media'    => $media
             ]);
         }catch(\Exception $e){
@@ -46,7 +46,7 @@ class ProductController extends Controller
         try {
             $records = Product::where('title','like',"%". $request->search."%")->paginate(8);
             SEOMeta::setTitle('Tìm kiếm '. $request->search);
-            SEOMeta::setDescription('Trang chủ');
+            SEOMeta::setDescription($request->desciption);
             SEOMeta::setCanonical('https://storemobile.xyz');
             return view('frontend.category.category')->with([
                 'records' => $records

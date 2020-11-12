@@ -17,11 +17,11 @@
                         "asNavFor": ".sp-img_slider-nav"
                         }'>
                             <div class="single-slide red zoom" width="300px;" height="300px;">
-                                <img style="width: 100%; height:300px;" src="{{ url('storage') }}/images/{{ $avatar->title }}" alt="Kenne's Product Image">
+                                <img style="width: 100%; height:300px;" src="{{ $record->media->img }}" alt="{{ $record->media->img }}">
                             </div>
                             @foreach($media as $img)
                             <div class="single-slide green zoom" style="width: 100%; height:100%;">
-                                <img  src="{{ url('storage') }}/images/{{ $img }}" alt="Kenne's Product Image">
+                                <img  src="{{ $img }}" alt="{{ $img }}">
                             </div>
                             @endforeach
                         </div>
@@ -39,11 +39,11 @@
                                 {"breakpoint":575, "settings": {"slidesToShow": 2}}
                             ]'>
                             <div class="single-slide red zoom">
-                                <img style="width: 50px; height:50px;" src="{{ url('storage') }}//images/{{ $avatar->title }}" alt="Kenne's Product Image">
+                                <img style="width: 50px; height:50px;" src="{{ $record->media->img }}" alt="{{ $record->media->img }}">
                             </div>
                             @foreach($media as $img)
                             <div class="single-slide green zoom">
-                                <img style="width: 50px; height:50px;" src="{{ url('storage') }}/images/{{ $img }}" alt="Kenne's Product Image">
+                                <img style="width: 50px; height:50px;" src="{{ $img }}" alt="{{ $img }}">
                             </div>
                             @endforeach
                         </div>

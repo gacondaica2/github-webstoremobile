@@ -21,7 +21,7 @@
                                         <img class="img-fluid" alt="" src="/backend/assets/images/logo/logo.png">
                                         <h2 class="m-b-0">Đăng Nhập</h2>
                                     </div>
-                                    <form method="POST" action="{{ route('admin') }}">
+                                    <form method="POST" action="{{ route('admin') }}" autocomplete="off">
                                         @csrf
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="userName">Tài khoản:</label>

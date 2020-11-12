@@ -208,6 +208,11 @@
                                 </div>
                             </div>
                             <p>(*) bắt buộc phải có đầy đủ</p>
+                            <div style="height: 30px;"></div>
+                            <div class="form-group col-md-8">
+                                <label class="font-weight-semibold">Description(SEO):</label>
+                                <input type="text" name="description" class="form-control" id="title" placeholder="Description..." autocomplete="off">
+                            </div>
                             <button type="submit" class="btn btn-primary">Thêm</button>
                         </form>
                     </div>

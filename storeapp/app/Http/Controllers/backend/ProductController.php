@@ -83,7 +83,7 @@ class ProductController extends Controller
             $product->category_id   = $request->childrent;
             $product->avatar_id     = $avatar->id;
             $product->media_id      = !is_null($request->media) ? $media_id :[];
-            $product->description   = "null";
+            $product->description   = $request->description;
             $product->option        = ProductController::Option($request);
             if( empty($product)) throw new \Exception('Thêm sản phẩm thất bại!');
             $product->save();
@@ -133,10 +133,10 @@ class ProductController extends Controller
                 'category'  => function($query) {
                     $query->with([
                         'parent' => function($query) {},
-                        'childrent' => function($query) {}
                     ]);
                 }
             ])->first();
+            $sub_category = Categories::where('parent_id', $item->category->id)->get();
             $parent             = Categories::where('parent_id', 0)->get();
             $manufacturer       = Manufacturer::all();
             $size               = Size::all();
@@ -152,6 +152,7 @@ class ProductController extends Controller
             if( empty($item)) throw new \Exception('Sản phẩm không tồn tại!');
             return view('backend.product.detail')->with([
                 'item'               => $item,
+                'sub_category'       => $sub_category,
                 'parent'             => $parent,
                 'manufacturers'      => $manufacturer,
                 'sizes'              => $size,
@@ -223,6 +224,7 @@ class ProductController extends Controller
             $product->height        = $request->height;
             $product->category_id   = $request->category;
             $product->option        = ProductController::Option($request);
+            $product->description   = $request->description;
             $product->save();
             DB::commit();
             return redirect()->back()->with([      

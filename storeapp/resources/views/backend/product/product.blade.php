@@ -50,7 +50,7 @@
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->price_sale }}</td>
                                 <td><a href="{{ route('edit_product', $item->id) }}">edit</a></td>
-                                <td><a href="{{ route('delete_product', $item->id) }}">Delete</a></td>
+                                <td><a onclick="return confirm('Bạn có chắc muốn xoá?')" href="{{ route('delete_product', $item->id) }}">Delete</a></td>
                             </tr>
                             @endforeach
                         @endif

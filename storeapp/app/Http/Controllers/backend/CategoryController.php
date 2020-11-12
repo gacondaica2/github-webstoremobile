@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Categories;
+use Darryldecode\Cart\Validators\Validator;
 use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
@@ -86,13 +87,23 @@ class CategoryController extends Controller
     public function edit($id, Request $request)
     {
         try {
+            DB::beginTransaction();
+            $validator = Validator::make($request->all(),[
+                'title'     => 'required'
+            ]);
+            if( $validator->fails()) throw new \Exception('Nhập thông tin đầy đủ!');
             $item = Categories::find($id);
             if( empty($item)) throw new \Exception('Danh mục vừa chỉnh sửa không tồn tại');
             $item->title        = $request->title;
             $item->parent_id    = ( isset($request->parent)) ? 0 : $request->childrent;
             $item->status       =  $request->status;
+            $item->description  = $request->description;
             $item->save();
-            return redirect()->back();
+            DB::commit();
+            return redirect()->back()->with([      
+                "messages"  => 'Cập nhật dữ liệu thành công!', 
+                'color'     => 'alert-success'
+            ]);;
         }catch(\Exception $e) {
             return redirect()->back()->with([      
                 "messages"  => $e->getMessage(), 
@@ -130,7 +141,6 @@ class CategoryController extends Controller
             if( count($record->childrent) > 0) {
                 foreach($record->childrent as $childrent) {
                     route('delete_category', $childrent->id);
-                    dd('ok');
                 }
             }
             if( count($record->product) > 0) {
@@ -143,7 +153,7 @@ class CategoryController extends Controller
             DB::commit();
             return redirect()->back()->with([      
                 "messages"  => 'Xoá danh mục thành công', 
-                'color'     => 'alert-danger'
+                'color'     => 'alert-success'
             ]);
         }catch(\Exception $e)
         {
@@ -180,7 +190,7 @@ class CategoryController extends Controller
         try {
             $category = Categories::where('id', $id)->first();
             if( empty($category)) throw new \Exception('Danh mục không tồn tại!');
-            $parent = Categories::where('parent_id', 0)->geta();
+            $parent = Categories::where('parent_id', 0)->get();
             return view('backend.category.detail')->with([
                 'category'  => $category,
                 'parent'    => $parent

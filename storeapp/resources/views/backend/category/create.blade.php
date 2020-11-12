@@ -43,6 +43,10 @@
                                         <option value="0">Tắt</option>
                                     </select>
                                 </div>
+                                <div class="form-group col-md-12">
+                                    <label class="font-weight-semibold">Description(Mô tả để SEO):</label>
+                                    <input type="text" name="description" class="form-control" id="title" placeholder="Tiêu đề">
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Thêm</button>
                         </form>

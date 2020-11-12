@@ -44,10 +44,10 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold" for="">Danh mục Phụ</label>
-                                    @if( isset($item->category->childrent) )
+                                    <label class="font-weight-semibold" for="">Danh mục con</label>
+                                    @if( isset($sub_category) ) 
                                     <select name="childrent" id="childrent" class="form-control childrent-category">
-                                        @foreach($item->category->childrent as $childrent)
+                                        @foreach($sub_category as $childrent)
                                         <option value="{{ $childrent->id }}">{{ $childrent->title }}</option>
                                         @endforeach
                                     </select>
@@ -205,6 +205,10 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <img  style="width: 300px; height:300px;" src="/storage/images/{{ $item->media->title }}" alt="image">
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label class="font-weight-semibold">Description(SEO):</label>
+                                    <input type="text" value="{{ $item->description }}" name="description" class="form-control" id="title" placeholder="Description..." autocomplete="off">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Chỉnh sửa</button>

@@ -11,8 +11,12 @@ $(document).ready(function() {
     })
 
     $(document).on('click','.remove-item-cart', function(){
-        var id = $(this).data('id');
-        RemoveItemCart(id);
+        var r = confirm('Bạn muốn xoá sản phẩm này khỏi giỏ hàng!')
+        if( r == true) {
+                
+            var id = $(this).data('id');
+            RemoveItemCart(id);
+        }
     })
 
     function Cart() {

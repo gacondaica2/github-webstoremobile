@@ -141,8 +141,7 @@
                             <div class="main-menu_area position-relative">
                                 <nav class="main-nav d-flex justify-content-center">
                                     <ul>
-                                        <li class="dropdown-holder"><a href="{{ route('home') }}">Home</a>
-                                        </li>                   
+                                        <li class="dropdown-holder"><a href="{{ route('home') }}">Trang chủ</a></li>                   
                                         @if( count(\Helper::category()) > 0)
                                         <li class="megamenu-holder position-static">Danh Mục <i
                                                 class="ion-chevron-down"></i>
@@ -203,8 +202,7 @@
                                         <div class="main-menu_area">
                                             <nav class="main-nav d-flex justify-content-center">
                                                 <ul>
-                                                    <li class="dropdown-holder"><a href="{{ route('home') }}">Trang Chủ <i
-                                                            class="ion-chevron-down"></i></a>
+                                                    <li class="dropdown-holder"><a href="{{ route('home') }}">Trang Chủ</a>
                                                     </li>
                                                     @if( count(\Helper::category()) > 0)
                                                         <li class="megamenu-holder position-static">Danh Mục <i
