@@ -194,12 +194,14 @@
                                 <div class="form-group col-md-3">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold">Ảnh đại diện:</label>
-                                    <input type="file" name="avatar">
+                                    <label class="input-parent btn font-weight-semibold ">Chọn ảnh đại diện
+                                        <input type="file" class="custom-file-input" name="avatar">
+                                    </label>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold">Ảnh mô tả:</label>
-                                    <input class="media" type="file" name="media[]" multiple="multiple">
+                                    <label class="input-parent btn font-weight-semibold">Chọn ảnh mô tả
+                                        <input type="file" class="custom-file-input" name="media[]" multiple="multiple">
+                                    </label>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <img  style="width: 300px; height:300px;" src="/storage/images/{{ $item->media->title }}" alt="image">

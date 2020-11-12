@@ -17,10 +17,13 @@
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="dob">Thêm slide mới:</label>
-                        <input type="file" name="media">
+                        <label class="input-parent btn  font-weight-semibold" for="dob">Thêm slide mới:
+                            <input type="file" class="custom-file-input" name="media">
+                        </label>
                     </div>
-                    <button class="btn" type="submit">Thêm</button>
+                    <div class="form-group col-md-4">
+                        <button class="btn" type="submit">Thêm</button>
+                    </div>
                 </div>
             </form>
         </div>

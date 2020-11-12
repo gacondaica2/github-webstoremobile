@@ -62,6 +62,8 @@ class ProductController extends Controller
                 $media->save();
                 $media_id[] = $media->id;
             }
+            $check_data = Product::where('title', $request->title)->orwhere('sku', $request->sku)->first();
+            if( !is_null($check_data)) throw new \Exception('Sản phẩm đã tồn tại!');
             $avatar = new Media();
             if( !$request->hasFile('media')) throw new \Exception('Chưa chọn hình ảnh hoặc hình ảnh không tồn tại!');
             $request->avatar->storeAs('public\images', date("Y-m-d").date("h-i-sa").$request->avatar->getClientOriginalName());
@@ -311,6 +313,7 @@ class ProductController extends Controller
 
     public static function Option($request) {
         try{
+            DB::beginTransaction();
             $validator = Validator::make($request->all(),[
                 'title'             => 'required',
                 'sku'               => 'required',
@@ -333,7 +336,8 @@ class ProductController extends Controller
                 'screensize'        => 'required',
                 'screenresolution'  => 'required',
                 'operatingsystem'   => 'required',
-                'pin'               => 'required'
+                'pin'               => 'required',
+                'childrent'         => 'required'
             ]);
             if( $validator->fails()) throw new \Exception('nhập đầy đủ thông tin (*)!');
             $manufacturer       = Manufacturer::find($request->manufacturers);
@@ -358,6 +362,7 @@ class ProductController extends Controller
             if( empty($pin)) throw new \Exception('pin không tồn tại!');
             $sim                = SIM::find($request->sim);
             if( empty($sim)) throw new \Exception('sim không tồn tại!');
+            DB::commit();
             return $option = [
                 'manufacturer' => (object)[
                     'value'    => $manufacturer->title,

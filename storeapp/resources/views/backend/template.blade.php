@@ -7,7 +7,7 @@
     <title>manage storemobile</title>
     <link rel="shortcut icon" href="/backend/assets/images/logo/favicon.png">
     <link href="/backend/assets/css/app.min.css" rel="stylesheet">
-
+    <link href="/backend/assets/css/style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>

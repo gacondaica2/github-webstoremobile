@@ -122,10 +122,29 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         try {
-            $record = Categories::where('id', $id)->first();
+            $record = Categories::where('id', $id)->with([
+                'childrent' => function($query) {},
+                'product'   => function($query) {}
+            ])->first();
+            DB::beginTransaction();
+            if( count($record->childrent) > 0) {
+                foreach($record->childrent as $childrent) {
+                    route('delete_category', $childrent->id);
+                    dd('ok');
+                }
+            }
+            if( count($record->product) > 0) {
+                foreach($record->product as $product) {
+                    route('delete_product', $product->id);
+                }
+            }
             if( empty($record) ) throw new \Exception('Danh mục không tồn tại!');
             $record->delete();
-            return redirect()->back();
+            DB::commit();
+            return redirect()->back()->with([      
+                "messages"  => 'Xoá danh mục thành công', 
+                'color'     => 'alert-danger'
+            ]);
         }catch(\Exception $e)
         {
             return redirect()->back()->with([      

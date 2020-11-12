@@ -192,14 +192,19 @@
                                 <div class="col-md-12">
                                     <textarea style="height: 300px;" name="editor" id="editor"></textarea>
                                 </div>
-                                <div class="col-md-12">
-                                <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold">Ảnh đại diện:</label>
-                                    <input type="file" name="avatar">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label class="font-weight-semibold">Ảnh mô tả:</label>
-                                    <input type="file" name="media[]" multiple="multiple">
+                                <div class="col-md-12" style="height:20px"></div>
+                                <div class="col-md-12 row">
+                                    <div class="form-group col-md-3">
+                                        <label class="input-parent btn font-weight-semibold ">Chọn ảnh đại diện
+                                            <input type="file" class="custom-file-input" name="avatar">
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-md-6"></div>
+                                    <div class="form-group col-md-3">
+                                        <label class="input-parent btn font-weight-semibold">Chọn ảnh mô tả
+                                            <input type="file" class="custom-file-input" name="media[]" multiple="multiple">
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <p>(*) bắt buộc phải có đầy đủ</p>

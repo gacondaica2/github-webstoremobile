@@ -229,7 +229,7 @@ class UserController extends Controller
                 'content'   => 'Thông tin lấy lại mật khẩu',
                 'record'    => $record,
                 'token'     => $reset->token,
-            ],  function($message) use ( $record ){
+            ],  function($message) use ( $record ) {
                 $message->to( $record->email, 'Lấy lại mật khẩu')->subject('Store Mobile Thông báo');
             });
             DB::commit();

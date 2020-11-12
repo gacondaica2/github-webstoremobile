@@ -22,8 +22,9 @@
                         <input type="text" value="{{ (!is_null($record)) ? $record->title : '' }}" name="title" class="form-control" id="title" placeholder="Tên Option">
                     </div>
                     <div class="form-group col-md-8">
-                        <label class="font-weight-semibold" for="dob">Hình mới: </label>
-                        <input type="file" name="media">
+                        <label class="input-parent btn font-weight-semibold" for="dob">Chọn hình khác
+                            <input type="file" class="custom-file-input" name="media">
+                        </label>
                     </div>
                     @if( !is_null($record))
                     <div class="form-group col-md-12">
