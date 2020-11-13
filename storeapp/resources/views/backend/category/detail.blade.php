@@ -24,12 +24,12 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label class="font-weight-semibold" for="dob">Cha:</label>
-                                    <input type="checkbox" id="parent" name="parent" {{ ($category->parent_id == 0) ? "checked" : "" }}>
+                                    <input type="checkbox" id="parent-category" class="parent-category" name="parent" {{ ($category->parent_id == 0) ? "checked" : "" }}>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="font-weight-semibold" for="">Danh mục cha(Nếu có)</label>
                                     @if( isset($parent) )
-                                    <select name="childrent" id="childrent" class="form-control">
+                                    <select name="childrent" id="childrent" class="form-control childrent-category">
                                         @foreach($parent as $item)
                                         <option value="{{ $item->id }}" {{ $item->id == $category->parent_id ? "selected" : ''}}>{{ $item->title }}</option>
                                         @endforeach

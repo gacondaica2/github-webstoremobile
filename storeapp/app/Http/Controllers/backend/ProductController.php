@@ -136,7 +136,7 @@ class ProductController extends Controller
                     ]);
                 }
             ])->first();
-            $sub_category = Categories::where('parent_id', $item->category->id)->get();
+            $sub_category       = Categories::where('parent_id',($item->category->parent_id == 0) ? $item->category->id : 1)->get();
             $parent             = Categories::where('parent_id', 0)->get();
             $manufacturer       = Manufacturer::all();
             $size               = Size::all();
@@ -222,7 +222,7 @@ class ProductController extends Controller
             $product->weight        = $request->weight;
             $product->width         = $request->width;
             $product->height        = $request->height;
-            $product->category_id   = $request->category;
+            $product->category_id   = $request->childrent;
             $product->option        = ProductController::Option($request);
             $product->description   = $request->description;
             $product->save();

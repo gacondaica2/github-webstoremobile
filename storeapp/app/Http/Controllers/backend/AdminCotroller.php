@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Model\User;
+use Darryldecode\Cart\Validators\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminCotroller extends Controller
 {
@@ -41,9 +44,34 @@ class AdminCotroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function view()
     {
-        //
+        return view('backend.dashboard.changePassword');
+    }
+
+    public function change(Request $request) {
+        try{
+            DB::beginTransaction();
+            $validator = Validator::make($request->all(),[
+                'password' => 'required|min:6|max:30',
+                'repassword'    => 'required|min:6|max:30|same:password'
+            ]);
+            if( $validator->fails()) throw new \Exception('Mật khẩu nhập không giống nhau!');
+            $admin = User::where('id', Auth::user()->id)->where('permission', 'administrator')->first();
+            if( is_null($admin)) throw new \Exception('Tài khoản không tồn tại');
+            $admin->password = bcrypt($request->password);
+            $admin->save();
+            DB::commit();
+            return redirect()->route('checkAdmin')->with([      
+                "messages"  => 'Thay đổi mật khẩu thành công!', 
+                'color'     => 'alert-success'
+            ]);
+        }catch(\Exception $e ) {
+            return redirect()->back()->with([      
+                "messages"  => $e->getMessage(), 
+                'color'     => 'alert-danger'
+            ]);
+        }
     }
 
     /**

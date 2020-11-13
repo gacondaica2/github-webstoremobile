@@ -18,9 +18,16 @@ class CategoryController extends Controller
     public function index($slug, Request $request)
     {
         try {
-            $category = Categories::where('slug', $slug)->first();
+            $category = Categories::where('slug', $slug)->with([
+                'childrent' => function($query) {}
+            ])->first();
             if( empty($category)) throw new \Exception('Danh mục không tồn tại!');
             $records = Product::where('category_id', $category->id);
+            if( count($category->childrent) > 0 ) {
+                foreach($category->childrent as $childrent ) {
+                    $records = $records->orwhere('category_id',$childrent->id);
+                }
+            }
             if(isset($request->type) && isset($request->orderBy)) {
                 $records = $records->orderBy($request->type, $request->orderBy);
             } 

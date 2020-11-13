@@ -87,5 +87,16 @@ $( document ).ready(function() {
                 }
             }
         })
-    }   
+    }
+    $(document).on('click', '.parent-category', function() {
+        if( document.getElementById('parent-category').checked ) {
+            $( ".childrent-category" ).prop( "disabled", true );
+        }
+        else {
+            $( ".childrent-category" ).prop( "disabled", false );
+        }
+    }) 
+    if( document.getElementById('parent-category').checked ) {
+        $( ".childrent-category" ).prop( "disabled", true );
+    }
 });

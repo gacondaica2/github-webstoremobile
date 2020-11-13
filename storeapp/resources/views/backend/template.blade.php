@@ -158,7 +158,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="">Tất cả tài khoản</a>
+                                    <a href="{{ route('change_pass_admin') }}">Thay đổi mật khẩu</a>
                                 </li>
                             </ul>
                         </li>

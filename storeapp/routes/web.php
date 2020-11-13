@@ -43,7 +43,12 @@ Route::post('/blogs/find', 'Frontend\BlogController@find')->name('search_blog');
 Route::get('administrator','backend\AdminCotroller@login')->name('checkAdmin');
 Route::post('administrator','backend\AdminCotroller@checkManage')->name('admin');
 Route::prefix('manage')->middleware('checkout')->group(function () {
+    //admin
     Route::get('dashboard','backend\AdminCotroller@index')->name('manage');
+    Route::get('change-password','backend\AdminCotroller@view')->name('change_pass_admin');
+    Route::post('change-password','backend\AdminCotroller@change')->name('change_password');
+
+    //category
     Route::get('danh-muc','backend\CategoryController@interface')->name('categoryall');
     Route::get('danh-muc/create','backend\CategoryController@index')->name('create_category');
     Route::post('danh-muc/create','backend\CategoryController@create')->name('create_category');

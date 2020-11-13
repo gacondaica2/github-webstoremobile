@@ -17,8 +17,8 @@
                         <div class="col-md-7 col-lg-5 m-h-auto">
                             <div class="card shadow-lg">
                                 <div class="card-body">
+                                    @include('backend.messages.messages')
                                     <div class="d-flex align-items-center justify-content-between m-b-30">
-                                        <img class="img-fluid" alt="" src="/backend/assets/images/logo/logo.png">
                                         <h2 class="m-b-0">Đăng Nhập</h2>
                                     </div>
                                     <form method="POST" action="{{ route('admin') }}" autocomplete="off">
@@ -31,10 +31,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="font-weight-semibold" for="password">mật khẩu:</label>
+                                            <label class="font-weight-semibold" for="password">Mật khẩu:</label>
                                             <div class="input-affix m-b-10">
                                                 <i class="prefix-icon anticon anticon-lock"></i>
-                                                <input type="password" name="password" class="form-control" id="password" placeholder="Pamật khẩussword">
+                                                <input type="password" name="password" class="form-control" id="password" placeholder="Mật khẩu">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Đăng nhập</button>
